@@ -50,7 +50,7 @@ public class UserDAO {
 
     }
 
-    public void saveUsers(User... users) {
+    public void updateUsers(User... users) {
 
         Session session = HibernateUtils.getSession();
         Transaction transaction = session.beginTransaction();
