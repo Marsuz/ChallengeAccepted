@@ -24,7 +24,7 @@
         <mapping class="model.ProcessedUrl" />
         <mapping class="model.Word" />-->
 
-        <mapping class="pl.accepted.challenge.model.User"/>
+        <mapping class="pl.accepted.challenge.model.users.User"/>
 
     </session-factory>
 </hibernate-configuration>

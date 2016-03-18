@@ -2,7 +2,7 @@ package pl.accepted.challenge.services.logging;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import pl.accepted.challenge.model.User;
+import pl.accepted.challenge.model.users.User;
 import pl.accepted.challenge.persistence.UserDAO;
 
 /**

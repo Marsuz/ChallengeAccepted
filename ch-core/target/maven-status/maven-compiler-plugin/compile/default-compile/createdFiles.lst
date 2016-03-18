@@ -1,0 +1,8 @@
+pl\accepted\challenge\model\challenges\FirstWinChallenge.class
+pl\accepted\challenge\services\logging\Authenticator.class
+pl\accepted\challenge\model\users\User.class
+pl\accepted\challenge\persistence\QuantityChallengeDAO.class
+pl\accepted\challenge\persistence\HibernateUtils.class
+pl\accepted\challenge\model\challenges\QuantityChallenge.class
+pl\accepted\challenge\persistence\FirstWinChallengeDAO.class
+pl\accepted\challenge\persistence\UserDAO.class

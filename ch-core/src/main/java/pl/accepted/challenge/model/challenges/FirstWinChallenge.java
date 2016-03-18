@@ -1,18 +1,19 @@
 package pl.accepted.challenge.model.challenges;
 
-import com.sun.javafx.beans.IDProperty;
-import pl.accepted.challenge.model.User;
+import pl.accepted.challenge.model.users.User;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Marcin on 2016-03-18.
  */
 
 @Entity
-public class FirstWinChallenge implements IChallenge {
+public class FirstWinChallenge {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,6 +23,7 @@ public class FirstWinChallenge implements IChallenge {
 
     @OneToMany
     private List<User> participants;
+
 
     private boolean isActive;
 
@@ -54,4 +56,5 @@ public class FirstWinChallenge implements IChallenge {
     public void setActive(boolean active) {
         isActive = active;
     }
+
 }

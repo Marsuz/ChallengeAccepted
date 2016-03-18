@@ -3,7 +3,7 @@ package pl.accepted.challenge.persistence;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
-import pl.accepted.challenge.model.User;
+import pl.accepted.challenge.model.users.User;
 
 import java.util.ArrayList;
 import java.util.List;

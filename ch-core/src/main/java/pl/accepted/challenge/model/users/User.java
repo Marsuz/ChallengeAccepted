@@ -1,4 +1,4 @@
-package pl.accepted.challenge.model;
+package pl.accepted.challenge.model.users;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
