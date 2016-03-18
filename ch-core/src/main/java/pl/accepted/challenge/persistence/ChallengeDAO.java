@@ -7,6 +7,10 @@ import pl.accepted.challenge.model.challenges.IChallenge;
  */
 public class ChallengeDAO {
 
-    public void updateChallenge(IChallenge challenge) {}
+    public void updateChallenge(IChallenge challenge) {
+
+
+
+    }
 
 }

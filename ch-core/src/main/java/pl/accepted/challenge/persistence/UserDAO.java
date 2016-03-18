@@ -64,4 +64,18 @@ public class UserDAO {
 
     }
 
+    public List<User> findAll() {
+
+        Session session = HibernateUtils.getSession();
+        Transaction transaction = session.beginTransaction();
+
+        List<User> users = session.createCriteria(User.class).list();
+
+        transaction.commit();
+        session.close();
+
+        return users;
+
+    }
+
 }

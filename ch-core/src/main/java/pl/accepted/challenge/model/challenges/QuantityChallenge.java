@@ -12,19 +12,25 @@ import java.util.Queue;
  */
 
 @Entity
-public class QuantityChallenger implements IChallenge {
+public class QuantityChallenge implements IChallenge {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    private String name;
 
     private boolean isActive;
 
     @OneToMany
     private List<User> participants;
 
-    public QuantityChallenger(List<User> participants) {
+
+
+    public QuantityChallenge(String name) {
+        this.name = name;
         this.participants = new ArrayList<>();
+        isActive = true;
     }
 
     public void addParticipant(User user) {
@@ -33,6 +39,7 @@ public class QuantityChallenger implements IChallenge {
 
     public void makeWinner(User user) {
         user.incChallengesCounter();
+        isActive = false;
     }
 
     public long getId() {
