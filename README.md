@@ -2,5 +2,6 @@
 
 npm install -g http-sever
 
-cd <project_directory>
+cd "project_directory"
+
 http-server
