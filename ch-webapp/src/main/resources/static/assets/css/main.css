@@ -2620,6 +2620,11 @@
 					margin: 0 0 1em 0;
 				}
 
+				.post > header .meta img {
+					padding-right: 1em;
+					float: left;
+				}
+
 				.post > header .meta > :last-child {
 					margin-bottom: 0;
 				}
