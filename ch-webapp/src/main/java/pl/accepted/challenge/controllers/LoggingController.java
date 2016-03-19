@@ -12,6 +12,9 @@ import pl.accepted.challenge.services.Encryptor;
 /**
  * Created by Marcin on 2016-03-19.
  */
+//@EnableAutoConfiguration(exclude = {
+//        JpaRepositoriesAutoConfiguration.class
+//})
 
 @RestController
 public class LoggingController {

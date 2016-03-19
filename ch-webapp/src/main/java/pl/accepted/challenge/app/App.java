@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 /**
  * Created by Marcin on 2016-03-18.
  */
-
+@EnableAutoConfiguration
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan(value = "pl.accepted.challenge")

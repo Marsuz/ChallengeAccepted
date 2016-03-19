@@ -10,6 +10,10 @@ import pl.accepted.challenge.persistence.UserDAO;
  * Created by Marcin on 2016-03-19.
  */
 
+//@EnableAutoConfiguration(exclude = {
+//        JpaRepositoriesAutoConfiguration.class
+//})
+
 @RestController
 public class BaseController {
 
