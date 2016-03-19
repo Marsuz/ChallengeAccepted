@@ -60,6 +60,11 @@ app.config(function ($urlRouterProvider, $stateProvider) {
             }
         })
 
+        .state('users', {
+            url: '/users',
+            templateUrl: 'assets/app/about/users.html'
+        })
+
         .state('new-challenge', {
             url: '/new-challenge',
             templateUrl: 'assets/app/challenge/new.html',
@@ -86,15 +91,16 @@ app.config(function ($urlRouterProvider, $stateProvider) {
                 $scope.signIn = function () {
                     console.log( $scope.credentials);
                     AuthService.logIn({username : $scope.credentials.username, password: $scope.credentials.password}).$promise.then(function (res) {
-                        currUser = res;
+                        currUser = res.nick;
                         $rootScope.variable = res.nick;
-                        // currUser = res;
-                        // console.log(res);
+                        console.log($rootScope.variable);
                     })
                 }
 
             }
         })
+
+
     
         .state('register', {
             url: '/register',
