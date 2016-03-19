@@ -4,19 +4,20 @@
 
 var app = angular.module('challengeAccepted', ['ui.router', 'ngResource']);
 
-var currUser = null;
+var currUser = {nick: "login"};
 
 app.config(function ($urlRouterProvider, $stateProvider) {
-
     $urlRouterProvider.otherwise('/');
-
     $stateProvider.state('home', {
         url: '/',
-        templateUrl: 'assets/app/home/home.html'
+        templateUrl: 'assets/app/home/home.html',
+        controller: function ($rootScope) {
+            $rootScope.variable = currUser.nick;
+        }
     })
         .state('about', {
             url: '/about',
-            templateUrl: 'assets/app/about/about.html',
+            templateUrl: 'assets/app/about/about.html'
         })
 
         .state('my-challenges', {
@@ -24,7 +25,6 @@ app.config(function ($urlRouterProvider, $stateProvider) {
             templateUrl: 'assets/app/challenge/my-challenges.html',
             controller: function ($scope, Challenges) {
                 console.log(Challenges);
-
                 Challenges.add(
                     {
                         id: 1,
@@ -54,7 +54,10 @@ app.config(function ($urlRouterProvider, $stateProvider) {
         })
         .state('challenge-info', {
             url: '/challenge-info',
-            templateUrl: 'assets/app/challenge/challenge-info.html'
+            templateUrl: 'assets/app/challenge/challenge-info.html',
+            controller: function () {
+                console.log(currUser);
+            }
         })
 
         .state('new-challenge', {
@@ -63,8 +66,8 @@ app.config(function ($urlRouterProvider, $stateProvider) {
             controller: function($scope, NewChallengeService){
                 $scope.newEntry = {
                     name: "",
-                    user: currUser.username
-                }
+                    user: currUser
+                };
                 $scope.addNewChallenge = function () {
                     console.log( $scope.newEntry);
                     NewChallengeService.addNewChallenge({name: $scope.newEntry.name, user: $scope.newEntry.user})
@@ -75,7 +78,7 @@ app.config(function ($urlRouterProvider, $stateProvider) {
         .state('login', {
             url: '/login',
             templateUrl: 'assets/app/authorization/login.html',
-            controller: function ($scope, AuthService) {
+            controller: function ($scope, AuthService, $rootScope) {
                 $scope.credentials = {
                     username: "", 
                     password: ""
@@ -84,9 +87,12 @@ app.config(function ($urlRouterProvider, $stateProvider) {
                     console.log( $scope.credentials);
                     AuthService.logIn({username : $scope.credentials.username, password: $scope.credentials.password}).$promise.then(function (res) {
                         currUser = res;
+                        $rootScope.variable = res.nick;
+                        // currUser = res;
+                        // console.log(res);
                     })
                 }
-                
+
             }
         })
     
