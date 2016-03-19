@@ -88,7 +88,7 @@ app.config(function ($urlRouterProvider, $stateProvider) {
                 };
                 $scope.signUp = function () {
                     console.log( $scope.credentials);
-                    AuthService.logIn({username : $scope.credentials.username, name: $scope.credentials.name, surname: $scope.credentials.surname, password: $scope.credentials.password})
+                    AuthService.signUp({username : $scope.credentials.username, name: $scope.credentials.name, surname: $scope.credentials.surname, password: $scope.credentials.password})
                 }
             }
         });
