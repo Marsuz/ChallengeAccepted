@@ -19,14 +19,14 @@ public class UserDAO {
 
     /*private static AtomicLong idCounter = new AtomicLong(1);*/
 
-    public List<User> findByIds(long... ids) {
+    public List<User> findByIds(String... ids) {
 
         Session session = HibernateUtils.getSession();
         Transaction transaction = session.beginTransaction();
 
         List<User> users = new ArrayList<User>();
-        for(long x : ids) {
-            User user = (User) session.get(User.class, x);
+        for(String x : ids) {
+            User user = session.get(User.class, x);
             users.add(user);
         }
 
@@ -36,13 +36,13 @@ public class UserDAO {
         return users;
     }
 
-    public void removeByIds(long... ids) {
+    public void removeByIds(String... ids) {
 
         Session session = HibernateUtils.getSession();
         Transaction transaction = session.beginTransaction();
 
-        for(long x : ids) {
-            User toDelete = (User) session.get(User.class, x);
+        for(String x : ids) {
+            User toDelete = session.get(User.class, x);
             if(toDelete != null) {
                 session.delete(toDelete);
             }
@@ -59,9 +59,14 @@ public class UserDAO {
         Transaction transaction = session.beginTransaction();
 
         for(User x : users) {
-            List<User> usersWithGivenNick = session.createQuery("from User u where u.nick = :uname").setParameter("uname", x.getNick()).list();
-            if(usersWithGivenNick.size() != 0) continue;
-            session.persist(x);
+            //User user = session.get(User.class, x.getNick());
+            //session.saveOrUpdate(x);
+            User oldUser = session.get(User.class, x.getNick());
+            if(oldUser != null) {
+                session.merge(x);
+            } else {
+                session.persist(x);
+            }
         }
 
         transaction.commit();

@@ -29,24 +29,23 @@ public class LoggingController {
 
     @RequestMapping(value = "/users/login", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<User> getLoggedUser(@RequestParam("username") String username, @RequestParam("password") String password) {
+    public User getLoggedUser(@RequestParam("username") String username, @RequestParam("password") String password) {
 
         String encryptedPass = encryptor.encrypt(password);
 
         User user = userDAO.findByNickAndPass(username, encryptedPass);
 
         if(user != null) {
-            return new ResponseEntity<User>(user, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<User>(null, null ,HttpStatus.UNAUTHORIZED);
+            return user;
         }
+        return null;
 
     }
 
 
     @RequestMapping(value = "/users/register", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<User> registerUser(@RequestParam("username") String username, @RequestParam("name") String name, @RequestParam("surname") String surname,
+    public User registerUser(@RequestParam("username") String username, @RequestParam("name") String name, @RequestParam("surname") String surname,
                                              @RequestParam("password") String password) {
 
         String encryptedPass = encryptor.encrypt(password);
@@ -54,12 +53,12 @@ public class LoggingController {
         User user = userDAO.findByNick(username);
 
         if(user != null) {
-            return new ResponseEntity<User>(null, null , HttpStatus.UNPROCESSABLE_ENTITY);
+            return null;
         } else {
             user = new User(username, name, surname, encryptedPass);
             userDAO.updateUsers(user);
-            user = userDAO.findByNick(username);
-            return new ResponseEntity<User>(user, HttpStatus.OK);
+            //user = userDAO.findByNick(username);
+            return user;
         }
 
     }

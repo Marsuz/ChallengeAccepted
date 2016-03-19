@@ -32,27 +32,38 @@ public class UserDAOTest {
 
         userDAO = new UserDAO();
 
-        user1 = new User("Marsuz", "Marcin", "Zajda", "pass");
-
-        user2 = new User("ElChomiczur", "Matuesz", "Kmiecik", "pass");
-
     }
 
     @Test
     public void shouldDaoPersistAndFindUser() {
 
+        user1 = new User("Marsuz", "Marcin", "Zajda", "pass");
+
+        user2 = new User("ElChomiczur", "Matuesz", "Kmiecik", "pass");
+
         userDAO.updateUsers(user1, user2);
 
         List<User> usersByFindAll = userDAO.findAll();
 
-        assertThat(usersByFindAll).contains(user1).contains(user2);
+        System.out.println(usersByFindAll);
+
+        //user1 = userDAO.findByNick("Marsuz");
+        user1.setName("Darek");
+
+        userDAO.updateUsers(user1, user2);
+
+        usersByFindAll = userDAO.findAll();
+
+        System.out.println(usersByFindAll);
+
+        //assertThat(usersByFindAll).contains(user1).contains(user2);
 
     }
 
-    @Test
+    /*@Test
     public void shouldDaoPersistAndFindByAllFields() {
 
-        //userDAO.updateUsers(user1, user2);
+        userDAO.updateUsers(user1, user2);
 
         User user = userDAO.findByNickAndPass("Marsuz", "pass");
 
@@ -72,6 +83,6 @@ public class UserDAOTest {
         System.out.println(user3);
         assertThat(user.getNick()).isEqualTo(user3.getNick());
 
-    }
+    }*/
 
 }

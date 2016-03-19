@@ -19,13 +19,13 @@ public class FirstWinChallengeDAO{
 
    /* private static AtomicLong idCounter = new AtomicLong(1);*/
 
-    public List<FirstWinChallenge> findByIds(long... ids) {
+    public List<FirstWinChallenge> findByIds(String... ids) {
 
         Session session = HibernateUtils.getSession();
         Transaction transaction = session.beginTransaction();
 
         List<FirstWinChallenge> challenges = new ArrayList<>();
-        for(long x : ids) {
+        for(String x : ids) {
             FirstWinChallenge challenge =  session.get(FirstWinChallenge.class, x);
             challenges.add(challenge);
         }
@@ -37,12 +37,12 @@ public class FirstWinChallengeDAO{
 
     }
 
-    public void removeByIds(long... ids) {
+    public void removeByIds(String... ids) {
 
         Session session = HibernateUtils.getSession();
         Transaction transaction = session.beginTransaction();
 
-        for(long x : ids) {
+        for(String x : ids) {
 
             FirstWinChallenge toDelete = session.get(FirstWinChallenge.class, x);
             if(toDelete != null) {
@@ -62,9 +62,12 @@ public class FirstWinChallengeDAO{
         Transaction transaction = session.beginTransaction();
 
         for(FirstWinChallenge x : challenges) {
-            List<FirstWinChallenge> challengesWithGivenName = session.createQuery("from FirstWinChallenge ch where ch.name = :chname").setParameter("chname", x.getName()).list();
-            if(challengesWithGivenName.size() != 0) continue;
-            session.save(x);
+            FirstWinChallenge oldChallenge = session.get(FirstWinChallenge.class, x.getName());
+            if(oldChallenge != null) {
+                session.merge(x);
+            } else {
+                session.persist(x);
+            }
         }
 
         transaction.commit();
@@ -91,13 +94,12 @@ public class FirstWinChallengeDAO{
         Session session = HibernateUtils.getSession();
         Transaction transaction = session.beginTransaction();
 
-        List<FirstWinChallenge> challenges = session.createQuery("from FirstWinChallenge ch where ch.name = :chname").setParameter("chname", name).list();
+        FirstWinChallenge challenge = session.get(FirstWinChallenge.class, name);
 
         transaction.commit();
         session.close();
 
-        if(challenges.size() == 0) return null;
-        return challenges.get(0);
+        return challenge;
 
 
     }

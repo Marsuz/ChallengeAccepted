@@ -14,11 +14,8 @@ import java.util.Date;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="user_id")
-    private long id;
-
-    @Column
     private String nick;
 
     @Column
@@ -44,13 +41,13 @@ public class User {
         this.challengeCounter = 0;
     }
 
-    public long getId() {
+    /*public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
-    }
+    }*/
 
     public String getNick() {
         return nick;
@@ -99,7 +96,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                //"id=" + id +
                 ", nick='" + nick + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
@@ -115,13 +112,12 @@ public class User {
 
         User user = (User) o;
 
-        return nick == user.nick;
+        return nick.equals(user.nick);
 
     }
 
     @Override
     public int hashCode() {
-        return (int) (id ^ (id >>> 32));
+        return nick.hashCode();
     }
-
 }

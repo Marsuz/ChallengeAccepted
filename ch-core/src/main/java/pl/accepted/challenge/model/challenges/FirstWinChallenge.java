@@ -16,11 +16,11 @@ import java.util.Map;
 @Entity
 public class FirstWinChallenge {
 
-    @Id
+    /*@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long id;*/
 
-    @Column
+    @Id
     private String name;
 
     @ManyToOne
@@ -51,14 +51,14 @@ public class FirstWinChallenge {
         isActive = false;
     }
 
-    public long getId() {
+    /*public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
     }
-
+*/
     public String getName() {
         return name;
     }
@@ -118,15 +118,12 @@ public class FirstWinChallenge {
 
         FirstWinChallenge challenge = (FirstWinChallenge) o;
 
-        if (id != challenge.id) return false;
         return name.equals(challenge.name);
 
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + name.hashCode();
-        return result;
+        return name.hashCode();
     }
 }

@@ -35,46 +35,49 @@ public class ChallengeController {
 
     @RequestMapping(value = "challenges/add", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<FirstWinChallenge> addChallenge(@RequestParam("name") String name, @RequestParam("user") String user) {
+    public FirstWinChallenge addChallenge(@RequestParam("name") String name, @RequestParam("user") String user) {
 
         User owner = userDAO.findByNick(user);
-        if(owner == null) return new ResponseEntity<FirstWinChallenge>(null, null, HttpStatus.BAD_REQUEST);
-
-
-
+        //if(owner == null) return new ResponseEntity<FirstWinChallenge>(null, null, HttpStatus.BAD_REQUEST);
         FirstWinChallenge challenge = firstWinChallengeDAO.findByName(name);
 
-        if(challenge != null) return new ResponseEntity<FirstWinChallenge>(null, null, HttpStatus.BAD_REQUEST);
+        //if(challenge != null) return new ResponseEntity<FirstWinChallenge>(null, null, HttpStatus.BAD_REQUEST);
+        if(challenge != null) return null;
 
         challenge = new FirstWinChallenge(name);
         challenge.setOwner(owner);
 
         firstWinChallengeDAO.updateChallenge(challenge);
-        challenge = firstWinChallengeDAO.findByName(name);
-        return new ResponseEntity<FirstWinChallenge>(challenge, HttpStatus.OK);
+
+        return challenge;
+        //challenge = firstWinChallengeDAO.findByName(name);
+        //return new ResponseEntity<FirstWinChallenge>(challenge, HttpStatus.OK);
 
     }
 
     @RequestMapping(value = "challenges/{name}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<FirstWinChallenge> getChallenge(@RequestParam("name") String name) {
+    public FirstWinChallenge getChallenge(@RequestParam("name") String name) {
 
         FirstWinChallenge challenge = firstWinChallengeDAO.findByName(name);
 
-        if(challenge != null) return new ResponseEntity<FirstWinChallenge>(null, null, HttpStatus.BAD_REQUEST);
-        return new ResponseEntity<FirstWinChallenge>(challenge, HttpStatus.OK);
+        return challenge; //new ResponseEntity<FirstWinChallenge>(null, null, HttpStatus.BAD_REQUEST);
+        //return null;
 
     }
 
-    /*@RequestMapping(value = "challenges/{name}/addparticipant", method = RequestMethod.POST)
+    @RequestMapping(value = "challenges/{name}/addparticipant", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<FirstWinChallenge> addParticipant(@RequestParam("name") String name) {
+    public void addParticipant(@RequestParam("name") String name, @RequestParam("nick") String nick) {
 
         FirstWinChallenge challenge = firstWinChallengeDAO.findByName(name);
+        User user = userDAO.findByNick(nick);
 
-        if(challenge != null) return new ResponseEntity<FirstWinChallenge>(null, null, HttpStatus.BAD_REQUEST);
-        return new ResponseEntity<FirstWinChallenge>(challenge, HttpStatus.OK);
+        if(challenge == null || user == null) return;
 
-    }*/
+        challenge.addParticipant(user);
+        firstWinChallengeDAO.updateChallenge(challenge);
+
+    }
 
 }

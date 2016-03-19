@@ -22,20 +22,20 @@ public class UsersController {
 
     @RequestMapping(value = "/users/all", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<List<User>> getAllUsers() {
+    public List<User> getAllUsers() {
 
         List<User> users = userDAO.findAll();
-        return new ResponseEntity<List<User>>(users, HttpStatus.OK);
-
+        return users;
     }
 
-    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/users/{nick}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<List<User>> getAllUsers(@PathVariable("id") Long id) {
+    public User getOneUser(@PathVariable("nick") String nick) {
 
-        List<User> user = userDAO.findByIds(id);
-        if(user == null) return new ResponseEntity<List<User>>(user, null, HttpStatus.OK);
-        else return new ResponseEntity<List<User>>(user, HttpStatus.OK);
+        User user = userDAO.findByNick(nick);
+        return user;
+        /*if(user == null) return new ResponseEntity<List<User>>(user, null, HttpStatus.OK);
+        else return new ResponseEntity<List<User>>(user, HttpStatus.OK);*/
     }
 
 }
