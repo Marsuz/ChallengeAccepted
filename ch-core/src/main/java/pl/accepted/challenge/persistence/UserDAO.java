@@ -98,6 +98,22 @@ public class UserDAO {
 
     }
 
+    public User findByNick(String username) {
+
+        Session session = HibernateUtils.getSession();
+        Transaction transaction = session.beginTransaction();
+
+        List<User> users = session.createQuery("from User u where u.nick = :uname").setParameter("uname", username).list();
+
+        transaction.commit();
+        session.close();
+
+        if(users.size() == 0) return null;
+        return users.get(0);
+
+
+    }
+
     /*public static long getNextId() {
 
         return idCounter.getAndIncrement();

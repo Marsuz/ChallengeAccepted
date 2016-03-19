@@ -51,7 +51,7 @@ public class LoggingController {
 
         String encryptedPass = encryptor.encrypt(password);
 
-        User user = userDAO.findByNickAndPass(username, encryptedPass);
+        User user = userDAO.findByNick(username);
 
         if(user != null) {
             return new ResponseEntity<User>(null, null , HttpStatus.UNPROCESSABLE_ENTITY);
