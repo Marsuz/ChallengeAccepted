@@ -92,6 +92,7 @@ public class UserDAO {
         transaction.commit();
         session.close();
 
+        if(users.size() == 0) return null;
         return users.get(0);
 
 
