@@ -3530,11 +3530,9 @@
 		}
 
 		#categories {
-			padding-top: 4.5em;
-			padding-left: 9em;
-			padding-bottom: 4.5em;
-			padding-right: 9em;
-
+			width: 60%;
+			margin: 0 auto;
+			margin-top: 20px
 		}
 
 
