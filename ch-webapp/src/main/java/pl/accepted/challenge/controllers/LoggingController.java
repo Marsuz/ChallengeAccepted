@@ -17,14 +17,14 @@ import pl.accepted.challenge.services.Encryptor;
 public class LoggingController {
 
     @Autowired
-    UserDAO userDAO;
+    private UserDAO userDAO;
 
     @Autowired
-    Encryptor encryptor;
+    private Encryptor encryptor;
 
 
 
-    @RequestMapping(name = "/users/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/users/login", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<User> getLoggedUser(@PathVariable("username") String username, @PathVariable("password") String password) {
 
@@ -40,24 +40,23 @@ public class LoggingController {
 
     }
 
-    @RequestMapping(name = "/users/register", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/users/register", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<User> registerUser(@PathVariable("username") String username, @PathVariable("name") String name, @PathVariable("surname") String surname,
-                                       @PathVariable("password") String password) {
+                                             @PathVariable("password") String password) {
 
         String encryptedPass = encryptor.encrypt(password);
 
         User user = userDAO.findByNickAndPass(username, encryptedPass);
 
         if(user != null) {
-            return new ResponseEntity<User>(null, null ,HttpStatus.UNPROCESSABLE_ENTITY);
+            return new ResponseEntity<User>(null, null , HttpStatus.UNPROCESSABLE_ENTITY);
         } else {
-
             user = new User(username, name, surname, encryptedPass);
             userDAO.updateUsers(user);
             return new ResponseEntity<User>(user, HttpStatus.OK);
         }
 
     }
-
 }
