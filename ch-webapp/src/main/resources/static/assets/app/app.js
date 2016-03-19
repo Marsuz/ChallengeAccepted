@@ -15,9 +15,14 @@ app.config(function ($urlRouterProvider, $stateProvider) {
         .state('about', {
             url: '/about',
             templateUrl: 'assets/app/about/about.html',
-            controller: function () {
+        })
 
-            }
+        .state('my-challenges', {
+            url: '/my-challenges',
+            templateUrl: 'assets/app/challenge/my-challenges.html',
+
         });
+
+
 
 });
