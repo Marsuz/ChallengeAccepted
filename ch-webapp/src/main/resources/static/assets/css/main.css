@@ -2604,6 +2604,11 @@
 					font-size: 1.2em;
 				}
 
+				.post > header .title img {
+					padding-right: 1em;
+					float: left;
+				}
+
 				.post > header .title > :last-child {
 					margin-bottom: 0;
 				}
@@ -2625,12 +2630,25 @@
 					float: left;
 				}
 
+
 				.post > header .meta > :last-child {
 					margin-bottom: 0;
 				}
 
 				.post > header .meta .published {
 					color: #3c3b3b;
+					display: block;
+					font-family: "Raleway", Helvetica, sans-serif;
+					font-size: 0.7em;
+					font-weight: 800;
+					letter-spacing: 0.25em;
+					margin-top: 0.5em;
+					text-transform: uppercase;
+					white-space: nowrap;
+				}
+
+				.post > header .meta .finished {
+					color: darkred;
 					display: block;
 					font-family: "Raleway", Helvetica, sans-serif;
 					font-size: 0.7em;
@@ -3446,5 +3464,29 @@
 			#menu > * {
 				padding: 1.5em;
 			}
+
+		}
+
+		#categories {
+			padding-top: 4.5em;
+			padding-left: 9em;
+			padding-bottom: 4.5em;
+			padding-right: 9em;
+
+		}
+
+
+		#categories > .title {
+			color: darkred;
+			color: #3c3b3b;
+			font-family: "Raleway", Helvetica, sans-serif;
+			font-weight: 800;
+			letter-spacing: 0.25em;
+			line-height: 3;
+			margin: 0 0 1em 0;
+			text-transform: uppercase;
+			font-size: 20pt;
+			text-align: center;
+
 
 		}
