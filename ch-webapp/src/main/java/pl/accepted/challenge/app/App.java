@@ -1,4 +1,4 @@
-package app;
+package pl.accepted.challenge.app;
 
 /**
  * Created by Marcin on 2016-03-19.

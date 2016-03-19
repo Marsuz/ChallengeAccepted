@@ -27,6 +27,8 @@ public class FirstWinChallenge {
 
     private boolean isActive;
 
+    public FirstWinChallenge() {}
+
     public FirstWinChallenge(String name) {
         this.name = name;
         this.participants = new ArrayList<>();

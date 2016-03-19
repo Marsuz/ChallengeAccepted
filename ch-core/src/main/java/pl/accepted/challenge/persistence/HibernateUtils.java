@@ -16,7 +16,7 @@ public class HibernateUtils {
 	static
 	{
 		Configuration configuration = new Configuration();
-		configuration.configure(new File("ch-core/src/main/resources/hibernate.cfg.xml"));
+		configuration.configure(new File("hibernate.cfg.xml"));
 		configuration.addAnnotatedClass(User.class);
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
 				configuration.getProperties()).build();

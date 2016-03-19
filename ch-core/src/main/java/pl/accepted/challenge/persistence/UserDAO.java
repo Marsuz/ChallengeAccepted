@@ -70,7 +70,7 @@ public class UserDAO {
         Session session = HibernateUtils.getSession();
         Transaction transaction = session.beginTransaction();
 
-        List<User> users = session.createQuery("From user").list();
+        List<User> users = session.createQuery("from User").list();
 
         transaction.commit();
         session.close();
