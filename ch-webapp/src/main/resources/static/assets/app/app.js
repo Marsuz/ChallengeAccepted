@@ -28,7 +28,7 @@ app.config(function ($urlRouterProvider, $stateProvider) {
                         id: 1,
                         name: "lalaalal",
                         owner: 'Zajda',
-                        expirationdate: '23.03.2016',
+                        expirationdate: '2016-03-22',
                         image: 'small_cup.png',
                         participants: [
                             {
