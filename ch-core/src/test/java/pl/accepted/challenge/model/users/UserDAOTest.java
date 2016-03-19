@@ -45,7 +45,7 @@ public class UserDAOTest {
 
         List<User> usersByFindAll = userDAO.findAll();
 
-        assertThat(usersByFindAll).hasSize(2).contains(user1).contains(user2);
+        assertThat(usersByFindAll).contains(user1).contains(user2);
 
     }
 
@@ -56,7 +56,7 @@ public class UserDAOTest {
 
         User user = userDAO.findByNickAndPass("Marsuz", "pass");
 
-        assertThat(user).isEqualTo(user1);
+        assertThat(user.getNick()).isEqualTo(user1.getNick());
 
     }
 
@@ -70,7 +70,7 @@ public class UserDAOTest {
         User user = userDAO.findByNick(user3.getNick());
 
         System.out.println(user3);
-        assertThat(user).isEqualsToByComparingFields(user3);
+        assertThat(user.getNick()).isEqualTo(user3.getNick());
 
     }
 

@@ -115,7 +115,7 @@ public class User {
 
         User user = (User) o;
 
-        return id == user.id;
+        return nick == user.nick;
 
     }
 

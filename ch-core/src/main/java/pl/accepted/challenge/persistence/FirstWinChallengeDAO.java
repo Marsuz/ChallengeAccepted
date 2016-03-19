@@ -62,6 +62,8 @@ public class FirstWinChallengeDAO{
         Transaction transaction = session.beginTransaction();
 
         for(FirstWinChallenge x : challenges) {
+            List<FirstWinChallenge> challengesWithGivenName = session.createQuery("from FirstWinChallenge ch where ch.name = :chname").setParameter("chname", x.getName()).list();
+            if(challengesWithGivenName.size() != 0) continue;
             session.save(x);
         }
 

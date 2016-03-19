@@ -59,6 +59,8 @@ public class UserDAO {
         Transaction transaction = session.beginTransaction();
 
         for(User x : users) {
+            List<User> usersWithGivenNick = session.createQuery("from User u where u.nick = :uname").setParameter("uname", x.getNick()).list();
+            if(usersWithGivenNick.size() != 0) continue;
             session.persist(x);
         }
 
