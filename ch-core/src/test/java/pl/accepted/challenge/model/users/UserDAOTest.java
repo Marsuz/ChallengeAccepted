@@ -60,4 +60,18 @@ public class UserDAOTest {
 
     }
 
+    @Test
+    public void shouldDaoPersistAndFindByNick() {
+
+        User user3 = new User("seyuioa", "Sara", "Sawa", "pass1");
+
+        userDAO.updateUsers(user3);
+
+        User user = userDAO.findByNick(user3.getNick());
+
+        System.out.println(user3);
+        assertThat(user).isEqualsToByComparingFields(user3);
+
+    }
+
 }

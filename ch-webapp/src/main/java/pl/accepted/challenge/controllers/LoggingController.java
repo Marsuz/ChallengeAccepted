@@ -46,8 +46,8 @@ public class LoggingController {
 
     @RequestMapping(value = "/users/register", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<User> registerUser(@PathVariable("username") String username, @PathVariable("name") String name, @PathVariable("surname") String surname,
-                                             @PathVariable("password") String password) {
+    public ResponseEntity<User> registerUser(@RequestParam("username") String username, @RequestParam("name") String name, @RequestParam("surname") String surname,
+                                             @RequestParam("password") String password) {
 
         String encryptedPass = encryptor.encrypt(password);
 
