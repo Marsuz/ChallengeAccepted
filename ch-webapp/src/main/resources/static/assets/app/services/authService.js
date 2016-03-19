@@ -13,7 +13,7 @@ app.factory('AuthService',function ($resource) {
         signUp: {
             method: 'POST',
             url: '/users/register',
-            params: {username: '@username', firstName: '@firstName', lastName: '@lastName', password: '@password'}
+            params: {username: '@username', name: '@name', surname: '@surname', password: '@password'}
         }
     })
 })

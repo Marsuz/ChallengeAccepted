@@ -26,10 +26,10 @@ public class ChallengeController {
 
     @RequestMapping(value = "challenges/all", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<List<FirstWinChallenge>> getAllChallenges() {
+    public List<FirstWinChallenge> getAllChallenges() {
 
         List<FirstWinChallenge> challenges = firstWinChallengeDAO.findAll();
-        return new ResponseEntity<List<FirstWinChallenge>>(challenges, HttpStatus.OK);
+        return challenges;
 
     }
 
@@ -54,5 +54,27 @@ public class ChallengeController {
         return new ResponseEntity<FirstWinChallenge>(challenge, HttpStatus.OK);
 
     }
+
+    @RequestMapping(value = "challenges/{name}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<FirstWinChallenge> getChallenge(@RequestParam("name") String name) {
+
+        FirstWinChallenge challenge = firstWinChallengeDAO.findByName(name);
+
+        if(challenge != null) return new ResponseEntity<FirstWinChallenge>(null, null, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<FirstWinChallenge>(challenge, HttpStatus.OK);
+
+    }
+
+    /*@RequestMapping(value = "challenges/{name}/addparticipant", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<FirstWinChallenge> addParticipant(@RequestParam("name") String name) {
+
+        FirstWinChallenge challenge = firstWinChallengeDAO.findByName(name);
+
+        if(challenge != null) return new ResponseEntity<FirstWinChallenge>(null, null, HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<FirstWinChallenge>(challenge, HttpStatus.OK);
+
+    }*/
 
 }
