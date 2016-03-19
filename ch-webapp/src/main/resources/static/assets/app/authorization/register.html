@@ -1,24 +1,27 @@
 <div id="wrapper">
-    <div id="main">
+    <div id="main" style="margin-left: 200px; margin-right: 200px">
         <article class="post">
+            <div style="text-align: center; vertical-align: middle; margin-top: 15px">
+                <img src="images/small_orange_fist.png"><img src="images/CAPTURE.PNG">
+            </div>
             <form ng-submit="signUp()">
-                <div>
+                <div style="margin-top: 15px">
                     <label for="username">Username:</label>
                     <input type="text" ng-model="credentials.username" name="username" id="username" required>
                 </div>
-                <div>
+                <div style="margin-top: 15px">
                     <label for="firstName">FirstName:</label>
                     <input type="text" ng-model="credentials.firstName" name="firstName" id="firstName" required>
                 </div>
-                <div>
+                <div style="margin-top: 15px">
                     <label for="lastName">LastName:</label>
                     <input type="text" ng-model="credentials.lastName" name="lastName" id="lastName" required>
                 </div>
-                <div>
+                <div style="margin-top: 15px">
                     <label for="password">Password:</label>
                     <input type="text" ng-model="credentials.password" name="password" id="password" required>
                 </div>
-                <input type="submit" value="sign up">
+                <input style="margin-top: 20px" type="submit" value="sign up">
             </form>
         </article>
     </div>
