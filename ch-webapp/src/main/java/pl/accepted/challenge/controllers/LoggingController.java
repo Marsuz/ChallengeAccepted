@@ -58,6 +58,7 @@ public class LoggingController {
         } else {
             user = new User(username, name, surname, encryptedPass);
             userDAO.updateUsers(user);
+            user = userDAO.findByNick(username);
             return new ResponseEntity<User>(user, HttpStatus.OK);
         }
 

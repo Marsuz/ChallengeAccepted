@@ -84,6 +84,22 @@ public class FirstWinChallengeDAO{
 
     }
 
+    public FirstWinChallenge findByName(String name) {
+
+        Session session = HibernateUtils.getSession();
+        Transaction transaction = session.beginTransaction();
+
+        List<FirstWinChallenge> challenges = session.createQuery("from FirstWinChallenge ch where ch.name = :chname").setParameter("chname", name).list();
+
+        transaction.commit();
+        session.close();
+
+        if(challenges.size() == 0) return null;
+        return challenges.get(0);
+
+
+    }
+
     /*public static long getNextId() {
 
         return idCounter.getAndIncrement();

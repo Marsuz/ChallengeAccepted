@@ -40,6 +40,19 @@ public class ChallengeController {
         User owner = userDAO.findByNick(user);
         if(owner == null) return new ResponseEntity<FirstWinChallenge>(null, null, HttpStatus.BAD_REQUEST);
 
+
+
+        FirstWinChallenge challenge = firstWinChallengeDAO.findByName(name);
+
+        if(challenge != null) return new ResponseEntity<FirstWinChallenge>(null, null, HttpStatus.BAD_REQUEST);
+
+        challenge = new FirstWinChallenge(name);
+        challenge.setOwner(owner);
+
+        firstWinChallengeDAO.updateChallenge(challenge);
+        challenge = firstWinChallengeDAO.findByName(name);
+        return new ResponseEntity<FirstWinChallenge>(challenge, HttpStatus.OK);
+
     }
 
 }
