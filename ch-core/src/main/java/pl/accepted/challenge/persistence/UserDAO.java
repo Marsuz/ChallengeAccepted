@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @Repository
 public class UserDAO {
 
-    private static AtomicLong idCounter = new AtomicLong(1);
+    /*private static AtomicLong idCounter = new AtomicLong(1);*/
 
     public List<User> findByIds(long... ids) {
 
@@ -34,7 +34,6 @@ public class UserDAO {
         session.close();
 
         return users;
-
     }
 
     public void removeByIds(long... ids) {
@@ -60,7 +59,7 @@ public class UserDAO {
         Transaction transaction = session.beginTransaction();
 
         for(User x : users) {
-            session.save(x);
+            session.persist(x);
         }
 
         transaction.commit();
@@ -82,10 +81,26 @@ public class UserDAO {
 
     }
 
-    public static long getNextId() {
+    public User findByNickAndPass(String username, String pass) {
+
+        Session session = HibernateUtils.getSession();
+        Transaction transaction = session.beginTransaction();
+
+        List<User> users = session.createQuery("from User u where u.nick = :uname " +
+                        "and u.hashedPass = :pass").setParameter("uname", username).setParameter("pass", pass).list();
+
+        transaction.commit();
+        session.close();
+
+        return users.get(0);
+
+
+    }
+
+    /*public static long getNextId() {
 
         return idCounter.getAndIncrement();
 
-    }
+    }*/
 
 }

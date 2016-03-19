@@ -18,7 +18,7 @@ public class BaseController {
 
     @RequestMapping("/testing")
     public String getHome(){
-        userDAO.updateUsers(new User("Mateusz", "Kmiecik", "pass"));
+        userDAO.updateUsers(new User("ElChomiczur", "Mateusz", "Kmiecik", "pass"));
         return userDAO.findByIds(1).toString();
     }
 

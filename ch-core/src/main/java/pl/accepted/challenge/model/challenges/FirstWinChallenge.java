@@ -17,7 +17,7 @@ import java.util.Map;
 public class FirstWinChallenge {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column
@@ -39,7 +39,7 @@ public class FirstWinChallenge {
     public FirstWinChallenge() {}
 
     public FirstWinChallenge(String name) {
-        this.id = FirstWinChallengeDAO.getNextId();
+        //this.id = FirstWinChallengeDAO.getNextId();
         this.name = name;
         this.participants = new ArrayList<>();
         this.isActive = true;

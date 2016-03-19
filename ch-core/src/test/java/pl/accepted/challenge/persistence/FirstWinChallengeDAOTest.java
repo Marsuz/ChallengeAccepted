@@ -33,8 +33,8 @@ public class FirstWinChallengeDAOTest {
     @Test
     public void shouldDAOPersistAndFindChallenge() {
 
-        User user1 = new User("Marcin", "Zajda", "pass");
-        User user2 = new User("Matuesz", "Kmiecik", "pass");
+        User user1 = new User("Marsuz", "Marcin", "Zajda", "pass");
+        User user2 = new User("ElChomiczur", "Matuesz", "Kmiecik", "pass");
 
         userDAO.updateUsers(user1, user2);
 
@@ -53,8 +53,8 @@ public class FirstWinChallengeDAOTest {
     @Test
     public void shouldDAOPersistAndDeleteChallenge() {
 
-        User user1 = new User("Marcin", "Zajda", "pass");
-        User user2 = new User("Matuesz", "Kmiecik", "pass");
+        User user1 = new User("Marsuz", "Marcin", "Zajda", "pass");
+        User user2 = new User("ElChomiczur", "Matuesz", "Kmiecik", "pass");
 
         userDAO.updateUsers(user1, user2);
 

@@ -32,9 +32,9 @@ public class UserDAOTest {
 
         userDAO = new UserDAO();
 
-        user1 = new User("Marcin", "Zajda", "password");
+        user1 = new User("Marsuz", "Marcin", "Zajda", "pass");
 
-        user2 = new User("Marcin", "Zareba", "password");
+        user2 = new User("ElChomiczur", "Matuesz", "Kmiecik", "pass");
 
     }
 
@@ -46,6 +46,17 @@ public class UserDAOTest {
         List<User> usersByFindAll = userDAO.findAll();
 
         assertThat(usersByFindAll).hasSize(2).contains(user1).contains(user2);
+
+    }
+
+    @Test
+    public void shouldDaoPersistAndFindByAllFields() {
+
+        //userDAO.updateUsers(user1, user2);
+
+        User user = userDAO.findByNickAndPass("Marsuz", "pass");
+
+        assertThat(user).isEqualTo(user1);
 
     }
 
