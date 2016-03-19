@@ -21,6 +21,11 @@ app.config(function ($urlRouterProvider, $stateProvider) {
             url: '/my-challenges',
             templateUrl: 'assets/app/challenge/my-challenges.html',
 
+        })
+
+        .state('new-challenge', {
+            url: '/new-challenge',
+            templateUrl: 'assets/app/challenge/new.html'
         });
 
 
