@@ -22,12 +22,15 @@ app.config(function ($urlRouterProvider, $stateProvider) {
             templateUrl: 'assets/app/challenge/my-challenges.html',
 
         })
+        .state('challenge-info', {
+            url: '/challenge-info',
+            templateUrl: 'assets/app/challenge/challenge-info.html'
+        })
 
         .state('new-challenge', {
             url: '/new-challenge',
             templateUrl: 'assets/app/challenge/new.html'
         });
-
 
 
 });

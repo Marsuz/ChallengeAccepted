@@ -2092,6 +2092,15 @@
 			display: block;
 		}
 
+        .image.img2 {
+            width: 5em !important;
+            /*height: 5em !important;*/
+        }
+
+        .image.img3{
+            width: 3em;
+        }
+
 		.image.left, .image.right {
 			max-width: 40%;
 		}
@@ -2407,6 +2416,13 @@
 				flex-direction: row-reverse;
 			}
 
+            ul.posts  header2 {
+                border-top: 0;
+                margin-top: 0;
+                padding-top: 0;
+                font-size: 2em;
+            }
+
 				ul.posts article .image {
 					display: block;
 					margin-right: 1.5em;
@@ -2430,6 +2446,29 @@
 						font-size: 0.7em;
 						margin-top: 0.125em;
 					}
+
+                    ul.posts article header h4 {
+                        font-size: 2em;
+                        border-top: 0;
+                        margin-top: 0;
+                        padding-top: 0;
+                    }
+
+                    ul.posts article header h5 {
+                        font-size: 1.5em;
+                        border-top: 0;
+                        margin-top: 0;
+                        padding-top: 0;
+                        padding-bottom: 0;
+                    }
+
+                    ul.posts article header h6 {
+                        font-size: 2.5em;
+                        margin-top: 0em;
+                        border-top: 0;
+                        border-bottom: 0;
+                        margin-bottom: 0;
+                    }
 
 					ul.posts article header .published {
 						display: block;
@@ -2604,6 +2643,18 @@
 					font-size: 1.2em;
 				}
 
+				.post > header .title h3 {
+					font-weight: 900;
+					font-size: 1.2em;
+					text-align: center;
+				}
+
+                .post > header .title h4 {
+                    font-weight: 900;
+                    font-size: 2em;
+                    text-align: center;
+                }
+
 				.post > header .title img {
 					padding-right: 1em;
 					float: left;
@@ -2629,7 +2680,6 @@
 					padding-right: 1em;
 					float: left;
 				}
-
 
 				.post > header .meta > :last-child {
 					margin-bottom: 0;
@@ -3306,6 +3356,10 @@
 		font-weight: 900;
 	}
 
+#intro header h3{
+    font-size: 1em;
+}
+
 	#intro header p {
 		font-size: 0.8em;
 	}
@@ -3320,6 +3374,10 @@
 			#intro header h2 {
 				font-size: 2em;
 			}
+
+        #intro header h3{
+            font-size: 1em;
+        }
 
 			#intro header p {
 				font-size: 0.7em;
@@ -3345,6 +3403,10 @@
 			#intro header h2 {
 				font-size: 1.25em;
 			}
+
+            #intro header h3{
+                font-size: 1em;
+            }
 
 			#intro header > :last-child {
 				margin-bottom: 0;
