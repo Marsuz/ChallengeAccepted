@@ -21,14 +21,14 @@ public class QuantityChallenge {
 
     private String name;
 
+    private User winner;
+
     private boolean isActive;
 
     private Map<User, Long> results;
 
     @OneToMany
     private List<User> participants;
-
-
 
     public QuantityChallenge(String name) {
         this.name = name;
@@ -42,8 +42,15 @@ public class QuantityChallenge {
     }
 
     public void makeWinner(User user) {
+        winner = user;
         user.incChallengesCounter();
         isActive = false;
+    }
+
+    public void setResultForUser(User user, long result) {
+
+        results.put(user, result);
+
     }
 
     public long getId() {
@@ -54,6 +61,22 @@ public class QuantityChallenge {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public User getWinner() {
+        return winner;
+    }
+
+    public void setWinner(User winner) {
+        this.winner = winner;
+    }
+
     public boolean isActive() {
         return isActive;
     }
@@ -62,15 +85,19 @@ public class QuantityChallenge {
         isActive = active;
     }
 
+    public Map<User, Long> getResults() {
+        return results;
+    }
+
+    public void setResults(Map<User, Long> results) {
+        this.results = results;
+    }
+
     public List<User> getParticipants() {
         return participants;
     }
 
     public void setParticipants(List<User> participants) {
         this.participants = participants;
-    }
-
-    public void setResultForUser(User user, long result) {
-        results.put(user, result);
     }
 }

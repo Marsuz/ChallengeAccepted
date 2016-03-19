@@ -21,9 +21,10 @@ public class FirstWinChallenge {
 
     private String name;
 
+    private User winner;
+
     @OneToMany
     private List<User> participants;
-
 
     private boolean isActive;
 
@@ -35,12 +36,34 @@ public class FirstWinChallenge {
         this.isActive = true;
     }
 
+    public void makeWinner(User user) {
+        winner = user;
+        user.incChallengesCounter();
+        isActive = false;
+    }
+
     public long getId() {
         return id;
     }
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public User getWinner() {
+        return winner;
+    }
+
+    public void setWinner(User winner) {
+        this.winner = winner;
     }
 
     public List<User> getParticipants() {
@@ -58,5 +81,4 @@ public class FirstWinChallenge {
     public void setActive(boolean active) {
         isActive = active;
     }
-
 }

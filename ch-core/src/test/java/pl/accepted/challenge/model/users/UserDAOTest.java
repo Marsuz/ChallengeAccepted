@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.*;
  */
 
 //@RunWith(SpringJUnit4ClassRunner.class)
-public class UserTest {
+public class UserDAOTest {
 
     //@Autowired
     private static UserDAO userDAO;
