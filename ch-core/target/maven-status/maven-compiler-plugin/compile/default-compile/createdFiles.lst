@@ -6,3 +6,4 @@ pl\accepted\challenge\persistence\HibernateUtils.class
 pl\accepted\challenge\model\challenges\QuantityChallenge.class
 pl\accepted\challenge\persistence\FirstWinChallengeDAO.class
 pl\accepted\challenge\persistence\UserDAO.class
+pl\accepted\challenge\MainTest.class

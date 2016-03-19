@@ -1,9 +1,6 @@
 package pl.accepted.challenge.model.users;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -11,24 +8,31 @@ import java.util.Date;
  */
 
 @Entity
+@Table(name="user")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column
     private String name;
+
+    @Column
     private String surname;
+
+    @Column
     private String hashedPass;
-    private Date birthDate;
+
+    @Column
     private long challengeCounter;
 
     public User() {}
 
-    public User(String name, String surname, Date birthDate) {
+    public User(String name, String surname, String hashedPass) {
         this.name = name;
         this.surname = surname;
-        this.birthDate = birthDate;
+        this.hashedPass = hashedPass;
         this.challengeCounter = 0;
     }
 
@@ -44,32 +48,16 @@ public class User {
         return name;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
-    public Date getBirthDate() {
-        return birthDate;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getSurname() {
+        return surname;
+    }
+
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public long getChallengeCounter() {
-        return challengeCounter;
-    }
-
-    public void setChallengeCounter(long challengeCounter) {
-        this.challengeCounter = challengeCounter;
     }
 
     public String getHashedPass() {
@@ -80,8 +68,24 @@ public class User {
         this.hashedPass = hashedPass;
     }
 
+    public long getChallengeCounter() {
+        return challengeCounter;
+    }
+
+    public void setChallengeCounter(long challengeCounter) {
+        this.challengeCounter = challengeCounter;
+    }
+
     public void incChallengesCounter() {
         challengeCounter++;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", challengeCounter=" + challengeCounter +
+                '}';
+    }
 }

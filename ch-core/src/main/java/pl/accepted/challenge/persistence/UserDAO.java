@@ -2,6 +2,7 @@ package pl.accepted.challenge.persistence;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import pl.accepted.challenge.model.users.User;
 
@@ -22,7 +23,8 @@ public class UserDAO {
 
         List<User> users = new ArrayList<User>();
         for(long x : ids) {
-            users.add(session.get(User.class, x));
+            User user = (User) session.get(User.class, x);
+            users.add(user);
         }
 
         transaction.commit();
@@ -37,9 +39,8 @@ public class UserDAO {
         Session session = HibernateUtils.getSession();
         Transaction transaction = session.beginTransaction();
 
-        List<User> users = new ArrayList<User>();
         for(long x : ids) {
-            User toDelete = session.get(User.class, x);
+            User toDelete = (User) session.get(User.class, x);
             if(toDelete != null) {
                 session.delete(toDelete);
             }
@@ -56,7 +57,7 @@ public class UserDAO {
         Transaction transaction = session.beginTransaction();
 
         for(User x : users) {
-            session.persist(x);
+            session.save(x);
         }
 
         transaction.commit();
@@ -69,7 +70,7 @@ public class UserDAO {
         Session session = HibernateUtils.getSession();
         Transaction transaction = session.beginTransaction();
 
-        List<User> users = session.createCriteria(User.class).list();
+        List<User> users = session.createQuery("From user").list();
 
         transaction.commit();
         session.close();

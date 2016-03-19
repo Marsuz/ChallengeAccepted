@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import pl.accepted.challenge.model.users.User;
 
 import java.io.File;
 
@@ -15,7 +16,8 @@ public class HibernateUtils {
 	static
 	{
 		Configuration configuration = new Configuration();
-		configuration.configure(new File("hibernate.cfg.xml"));
+		configuration.configure(new File("ch-core/src/main/resources/hibernate.cfg.xml"));
+		configuration.addAnnotatedClass(User.class);
 		ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
 				configuration.getProperties()).build();
 		sessionFactory = configuration.buildSessionFactory(serviceRegistry);

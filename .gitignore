@@ -1,3 +1,5 @@
 *.iml
 .idea/
-ch-webapp/target
+ch-webapp/target/
+ch-core/target/
+target/
