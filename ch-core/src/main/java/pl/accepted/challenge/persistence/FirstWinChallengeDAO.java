@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @Repository
 public class FirstWinChallengeDAO{
 
-    private static AtomicLong idCounter = new AtomicLong(1);
+   /* private static AtomicLong idCounter = new AtomicLong(1);*/
 
     public List<FirstWinChallenge> findByIds(long... ids) {
 
@@ -84,11 +84,11 @@ public class FirstWinChallengeDAO{
 
     }
 
-    public static long getNextId() {
+    /*public static long getNextId() {
 
         return idCounter.getAndIncrement();
 
-    }
+    }*/
 
 
 }

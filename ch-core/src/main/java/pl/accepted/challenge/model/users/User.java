@@ -14,9 +14,12 @@ import java.util.Date;
 public class User {
 
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="user_id")
     private long id;
+
+    @Column
+    private String nick;
 
     @Column
     private String name;
@@ -32,8 +35,9 @@ public class User {
 
     public User() {}
 
-    public User(String name, String surname, String hashedPass) {
-        this.id = UserDAO.getNextId();
+    public User(String nick, String name, String surname, String hashedPass) {
+        /*this.id = UserDAO.getNextId();*/
+        this.nick = nick;
         this.name = name;
         this.surname = surname;
         this.hashedPass = hashedPass;
@@ -46,6 +50,14 @@ public class User {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getNick() {
+        return nick;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
     }
 
     public String getName() {
@@ -88,10 +100,11 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", nick='" + nick + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", challengeCounter=" + challengeCounter +
                 ", hashedPass='" + hashedPass + '\'' +
+                ", challengeCounter=" + challengeCounter +
                 '}';
     }
 
@@ -102,17 +115,13 @@ public class User {
 
         User user = (User) o;
 
-        if (id != user.id) return false;
-        if (!name.equals(user.name)) return false;
-        return surname.equals(user.surname);
+        return id == user.id;
 
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + name.hashCode();
-        result = 31 * result + surname.hashCode();
-        return result;
+        return (int) (id ^ (id >>> 32));
     }
+
 }
