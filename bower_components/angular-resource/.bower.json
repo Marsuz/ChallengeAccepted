@@ -15,11 +15,7 @@
     "commit": "71d95e1edb207113f42d2a599e5e734951459252"
   },
   "_source": "git://github.com/angular/bower-angular-resource.git",
-<<<<<<< Updated upstream
-  "_target": "^1.5.2",
-=======
   "_target": "~1.5.2",
->>>>>>> Stashed changes
   "_originalSource": "angular-resource",
   "_direct": true
 }
