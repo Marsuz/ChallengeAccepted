@@ -68,11 +68,28 @@ app.config(function ($urlRouterProvider, $stateProvider) {
                     username: "", 
                     password: ""
                 };
-                $scope.signUp = function () {
+                $scope.signIn = function () {
                     console.log( $scope.credentials);
                     AuthService.logIn({username : $scope.credentials.username, password: $scope.credentials.password})
                 }
                 
+            }
+        })
+    
+        .state('register', {
+            url: '/register',
+            templateUrl: 'assets/app/authorization/register.html',
+            controller: function ($scope, AuthService) {
+                $scope.credentials = {
+                    username: "",
+                    firstName: "",
+                    lastName: "",
+                    password: ""
+                };
+                $scope.signUp = function () {
+                    console.log( $scope.credentials);
+                    AuthService.logIn({username : $scope.credentials.username, firstName: $scope.credentials.firstName, lastName: $scope.credentials.lastName, password: $scope.credentials.password})
+                }
             }
         });
 

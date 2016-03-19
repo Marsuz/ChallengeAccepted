@@ -7,7 +7,13 @@ app.factory('AuthService',function ($resource) {
         logIn: {
             method: 'POST',
             url: '/users/login',
-            params: {username : '@username', password: '@password'}
+            params: {username: '@username', password: '@password'}
+        },
+        
+        signUp: {
+            method: 'POST',
+            url: '/users/register',
+            params: {username: '@username', firstName: '@firstName', lastName: '@lastName', password: '@password'}
         }
     })
 })
