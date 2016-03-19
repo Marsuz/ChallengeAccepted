@@ -1,0 +1,17 @@
+<div id="wrapper">
+    <div id="main">
+        <article class="post">
+            <form ng-submit="signUp()">
+                <div>
+                    <label for="username">Username:</label>
+                    <input type="text" ng-model="credentials.username" name="username" id="username" required>
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="text" ng-model="credentials.password" name="password" id="password" required>
+                </div>
+            <input type="submit" value=" login">
+            </form>
+        </article>
+    </div>
+</div>
