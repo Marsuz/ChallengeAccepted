@@ -8,6 +8,7 @@ import pl.accepted.challenge.model.users.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by Marcin on 2016-03-18.
@@ -15,6 +16,8 @@ import java.util.List;
 
 @Repository
 public class UserDAO {
+
+    private static AtomicLong idCounter = new AtomicLong(1);
 
     public List<User> findByIds(long... ids) {
 
@@ -76,6 +79,12 @@ public class UserDAO {
         session.close();
 
         return users;
+
+    }
+
+    public static long getNextId() {
+
+        return idCounter.getAndIncrement();
 
     }
 

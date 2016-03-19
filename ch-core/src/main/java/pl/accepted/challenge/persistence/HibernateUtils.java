@@ -15,7 +15,7 @@ public class HibernateUtils {
 	
 	private static SessionFactory sessionFactory;
 
-	private static Class[] classes = {User.class, FirstWinChallenge.class, QuantityChallenge.class};
+	private static Class[] classes = {User.class, FirstWinChallenge.class};//, QuantityChallenge.class};
 	
 	static
 	{

@@ -1,6 +1,7 @@
 package pl.accepted.challenge.persistence;
 
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 
@@ -10,7 +11,10 @@ import static org.junit.Assert.*;
 public class QuantityChallengeDAOTest {
 
     @BeforeClass
-    public void setUp() {
+    public static void setUp() {
 
     }
+
+    @Test
+    public void shouldSomething(){}
 }

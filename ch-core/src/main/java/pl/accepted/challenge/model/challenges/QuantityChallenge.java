@@ -19,10 +19,18 @@ public class QuantityChallenge {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User owner;
+
+    @ManyToOne
+    @JoinColumn(name="user_id")
     private User winner;
 
+    @Column
     private boolean isActive;
 
     private Map<User, Long> results;
@@ -67,6 +75,14 @@ public class QuantityChallenge {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
     public User getWinner() {

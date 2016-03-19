@@ -33,10 +33,8 @@ public class UserDAOTest {
         userDAO = new UserDAO();
 
         user1 = new User("Marcin", "Zajda", "password");
-        user1.setId(1);
 
         user2 = new User("Marcin", "Zareba", "password");
-        user2.setId(2);
 
     }
 

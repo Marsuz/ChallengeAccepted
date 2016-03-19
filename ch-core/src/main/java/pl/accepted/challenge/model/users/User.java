@@ -1,5 +1,7 @@
 package pl.accepted.challenge.model.users;
 
+import pl.accepted.challenge.persistence.UserDAO;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -12,7 +14,8 @@ import java.util.Date;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="user_id")
     private long id;
 
     @Column
@@ -30,6 +33,7 @@ public class User {
     public User() {}
 
     public User(String name, String surname, String hashedPass) {
+        this.id = UserDAO.getNextId();
         this.name = name;
         this.surname = surname;
         this.hashedPass = hashedPass;
