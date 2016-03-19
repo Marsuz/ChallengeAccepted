@@ -20,6 +20,38 @@ app.config(function ($urlRouterProvider, $stateProvider) {
         .state('my-challenges', {
             url: '/my-challenges',
             templateUrl: 'assets/app/challenge/my-challenges.html',
+            controller: function ($scope, Challenges) {
+                console.log(Challenges);
+
+                Challenges.add(
+                    {
+                        id: 1,
+                        name: "lalaalal",
+                        owner: 'Zajda',
+                        expirationdate: '23.03.2016',
+                        image: 'small_cup.png',
+                        participants: [
+                            {
+                                id: 1,
+                                name: 'Shimmy'
+                            }
+                        ],
+                        invited: [
+                            {
+                                id: 1,
+                                name: 'Zajda'
+                            }
+                        ]
+                    }
+                );
+
+                $scope.newchallenges = Challenges.db.newchallenges;
+                $scope.acceptedchallenges = Challenges.db.acceptedchallenges;
+                $scope.rejectedchallenges = Challenges.db.rejectedchallenges;
+                $scope.finishedchallenges = Challenges.db.finishedchallenges;
+
+                
+            }
 
         })
         .state('challenge-info', {
