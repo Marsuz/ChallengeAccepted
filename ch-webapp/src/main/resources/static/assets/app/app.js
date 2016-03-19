@@ -4,6 +4,8 @@
 
 var app = angular.module('challengeAccepted', ['ui.router', 'ngResource']);
 
+var currUser = null;
+
 app.config(function ($urlRouterProvider, $stateProvider) {
 
     $urlRouterProvider.otherwise('/');
@@ -57,7 +59,17 @@ app.config(function ($urlRouterProvider, $stateProvider) {
 
         .state('new-challenge', {
             url: '/new-challenge',
-            templateUrl: 'assets/app/challenge/new.html'
+            templateUrl: 'assets/app/challenge/new.html',
+            controller: function($scope, NewChallengeService){
+                $scope.newEntry = {
+                    name: "",
+                    user: currUser.username
+                }
+                $scope.addNewChallenge = function () {
+                    console.log( $scope.newEntry);
+                    NewChallengeService.addNewChallenge({name: $scope.newEntry.name, user: $scope.newEntry.user})
+                }
+            }
         })
     
         .state('login', {
@@ -70,7 +82,9 @@ app.config(function ($urlRouterProvider, $stateProvider) {
                 };
                 $scope.signIn = function () {
                     console.log( $scope.credentials);
-                    AuthService.logIn({username : $scope.credentials.username, password: $scope.credentials.password})
+                    AuthService.logIn({username : $scope.credentials.username, password: $scope.credentials.password}).$promise.then(function (res) {
+                        currUser = res;
+                    })
                 }
                 
             }

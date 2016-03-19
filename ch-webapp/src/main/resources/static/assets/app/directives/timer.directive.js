@@ -51,8 +51,6 @@ app.directive("timer", function(){
                 scope.time.hours = t.hours;
                 scope.time.minutes = t.minutes;
                 scope.time.seconds = t.seconds;
-
-                console.log(scope.time);
                 scope.$apply();
 
                 
