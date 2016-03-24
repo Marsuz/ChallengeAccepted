@@ -3,6 +3,7 @@ package pl.accepted.challenge.controllers;
 import challenges.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pl.accepted.challenge.exceptions.UserAlreadyExistsException;
 import pl.accepted.challenge.services.LoggingService;
 
 @RestController
@@ -14,30 +15,22 @@ public class LoggingController {
     @RequestMapping(value = "/users/login", method = RequestMethod.POST)
     @ResponseBody
     public User getLoggedUser(@RequestParam("username") String username, @RequestParam("password") String password) {
-
-        User user = loggingService.findByUsername(username);
-
-        if(user != null) {
-            return user;
-        }
-        return null;
-
+        return loggingService.findUser(username);
     }
 
 
     @RequestMapping(value = "/users/register", method = RequestMethod.POST)
     @ResponseBody
     public User registerUser(@RequestParam("username") String username, @RequestParam("name") String name, @RequestParam("surname") String surname,
-                                             @RequestParam("password") String password) {
+                                             @RequestParam("password") String password) throws UserAlreadyExistsException {
 
-        User user = loggingService.findByUsername(username);
+        User user = loggingService.findUser(username);
 
         if(user != null) {
-            return null;
+            throw new UserAlreadyExistsException("This username already exists");
         } else {
             user = new User(username, name, surname, password);
             loggingService.saveUser(user);
-            //user = userDAO.findByNick(username);
             return user;
         }
 

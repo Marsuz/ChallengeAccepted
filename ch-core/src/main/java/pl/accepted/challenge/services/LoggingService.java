@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.accepted.challenge.persistence.UserRepository;
 
+/**
+ * Created by wiktor on 25/03/16.
+ */
 @Service
 public class LoggingService {
 
@@ -15,8 +18,8 @@ public class LoggingService {
         userRepository.save(user);
     }
 
-    public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
+    public User findUser(String username) {
+        return userRepository.findOne(username);
     }
 
 
