@@ -1,13 +1,9 @@
 package pl.accepted.challenge.model.users;
 
-import pl.accepted.challenge.persistence.UserDAO;
-
-import javax.persistence.*;
-import java.util.Date;
-
-/**
- * Created by Marcin on 2016-03-18.
- */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name="user")
