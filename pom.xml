@@ -19,7 +19,6 @@
     </properties>
 
     <modules>
-        <module>ch-webapp</module>
         <module>ch-core</module>
         <module>ch-model</module>
     </modules>
