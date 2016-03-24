@@ -1,7 +1,5 @@
 //package challenges;
 //
-//import users.User;
-//
 //import javax.persistence.*;
 //import java.util.ArrayList;
 //import java.util.HashMap;
@@ -13,7 +11,7 @@
 //
 //	@Id
 //	@GeneratedValue(strategy = GenerationType.AUTO)
-//	private long id;
+//	private Long id;
 //
 //	@Column
 //	private String name;
@@ -29,7 +27,7 @@
 //	@Column
 //	private boolean isActive;
 //
-//	private Map<User, Long> results;
+////	private Map<User, Long> results;
 //
 //	@OneToMany
 //	private List<User> participants;
@@ -38,7 +36,7 @@
 //		this.name = name;
 //		this.participants = new ArrayList<>();
 //		isActive = true;
-//		this.results = new HashMap<>();
+////		this.results = new HashMap<>();
 //	}
 //
 //	public void addParticipant(User user) {
@@ -53,7 +51,7 @@
 //
 //	public void setResultForUser(User user, long result) {
 //
-//		results.put(user, result);
+////		results.put(user, result);
 //
 //	}
 //
@@ -97,13 +95,13 @@
 //		isActive = active;
 //	}
 //
-//	public Map<User, Long> getResults() {
-//		return results;
-//	}
-//
-//	public void setResults(Map<User, Long> results) {
-//		this.results = results;
-//	}
+////	public Map<User, Long> getResults() {
+////		return results;
+////	}
+////
+////	public void setResults(Map<User, Long> results) {
+////		this.results = results;
+////	}
 //
 //	public List<User> getParticipants() {
 //		return participants;

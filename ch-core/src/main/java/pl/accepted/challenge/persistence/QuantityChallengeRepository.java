@@ -1,16 +1,9 @@
-//package pl.accepted.challenge.persistence;
-//
-//import challenges.QuantityChallenge;
-//import org.hibernate.Session;
-//import org.hibernate.Transaction;
-//import org.springframework.stereotype.Repository;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//@Repository
-//public class QuantityChallengeService {
-//
+package pl.accepted.challenge.persistence;
+
+import org.springframework.data.repository.CrudRepository;
+
+//public interface QuantityChallengeRepository extends CrudRepository<QuantityChallenge, Long> {
+
 //    public List<QuantityChallenge> findByIds(long... ids) {
 //
 //        Session session = HibernateUtils.getSession();
