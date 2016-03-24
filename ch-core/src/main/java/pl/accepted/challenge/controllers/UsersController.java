@@ -3,7 +3,7 @@
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.web.bind.annotation.*;
 //import pl.accepted.challenge.persistence.UserService;
-//import users.User;
+//import pl.accepted.challenge.model.users.User;
 //
 //import java.util.List;
 //

@@ -3,7 +3,7 @@
 //import org.junit.BeforeClass;
 //import org.junit.Test;
 //import pl.accepted.challenge.persistence.UserService;
-//import users.User;
+//import challenges.User;
 //
 //import java.util.List;
 //

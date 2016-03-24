@@ -4,7 +4,7 @@
 //import org.junit.BeforeClass;
 //import org.junit.Ignore;
 //import org.junit.Test;
-//import users.User;
+//import challenges.User;
 //
 //import java.util.List;
 //

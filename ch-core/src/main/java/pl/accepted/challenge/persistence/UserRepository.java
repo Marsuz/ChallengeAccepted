@@ -1,9 +1,9 @@
 package pl.accepted.challenge.persistence;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import users.User;
+import challenges.User;
+import org.springframework.data.repository.CrudRepository;
 
-public interface UserService extends JpaRepository<User,String> {
+public interface UserRepository extends CrudRepository<User, Integer> {
 
 //    /*private static AtomicLong idCounter = new AtomicLong(1);*/
 //

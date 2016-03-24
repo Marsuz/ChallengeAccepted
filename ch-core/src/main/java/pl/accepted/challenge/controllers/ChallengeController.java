@@ -5,7 +5,7 @@
 //import org.springframework.web.bind.annotation.*;
 //import pl.accepted.challenge.persistence.FirstWinChallengeService;
 //import pl.accepted.challenge.persistence.UserService;
-//import users.User;
+//import pl.accepted.challenge.model.users.User;
 //
 //import java.util.List;
 //

@@ -4,7 +4,7 @@
 //import org.springframework.web.bind.annotation.*;
 //import pl.accepted.challenge.persistence.UserService;
 //import pl.accepted.challenge.services.Encryptor;
-//import users.User;
+//import pl.accepted.challenge.model.users.User;
 //
 //@RestController
 //public class LoggingController {
