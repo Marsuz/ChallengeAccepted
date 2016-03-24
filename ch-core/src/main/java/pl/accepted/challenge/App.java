@@ -1,13 +1,16 @@
-package pl.accepted.challenge.app;
+package pl.accepted.challenge;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import pl.accepted.challenge.persistence.UserService;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@ComponentScan(value = "pl.accepted.challenge")
 public class App {
+
+    @Autowired
+    private UserService userService;
 
     public static void main(String[] args) {
             SpringApplication.run(App.class, args);
