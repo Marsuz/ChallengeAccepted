@@ -16,7 +16,6 @@
         <junit-version>4.12</junit-version>
         <asserj-version>1.2.0</asserj-version>
         <spring-version>4.2.5.RELEASE</spring-version>
-
     </properties>
 
     <modules>
@@ -24,37 +23,25 @@
         <module>ch-core</module>
     </modules>
 
-
     <dependencyManagement>
         <dependencies>
-            <!--<dependency>-->
-                <!--<groupId>org.hibernate</groupId>-->
-                <!--<artifactId>hibernate-core</artifactId>-->
-                <!--<version>5.0.9</version>-->
-            <!--</dependency>-->
-
-            <!--<dependency>-->
-                <!--<groupId>org.hibernate</groupId>-->
-                <!--<artifactId>hibernate-entitymanager</artifactId>-->
-                <!--<version>5.0.9</version>-->
-            <!--</dependency>-->
-
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-core</artifactId>
                 <version>${hibernate-version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-entitymanager</artifactId>
                 <version>${hibernate-version}</version>
             </dependency>
+
             <dependency>
                 <groupId>com.h2database</groupId>
                 <artifactId>h2</artifactId>
                 <version>${h2-version}</version>
             </dependency>
-
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -91,15 +78,7 @@
                 <artifactId>spring-test</artifactId>
                 <version>${spring-version}</version>
             </dependency>
-
-            <!--<dependency>-->
-                <!--<groupId>org.hibernate</groupId>-->
-                <!--<artifactId>hibernate-entitymanager</artifactId>-->
-                <!--<version>${hibernate-version}</version>-->
-            <!--</dependency>-->
-
         </dependencies>
-
     </dependencyManagement>
 
     <build>
