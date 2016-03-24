@@ -33,7 +33,7 @@ public class UsersController {
 		userService.updateOrCreate(user);
 	}
 
-	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+	@RequestMapping(value = "", method = RequestMethod.DELETE)
 	public void deleteUser(@RequestBody User user) {
 		userService.deleteUser(user);
 	}
