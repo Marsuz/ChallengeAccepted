@@ -1,34 +1,36 @@
-//package pl.accepted.challenge.controllers;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.web.bind.annotation.*;
-//import pl.accepted.challenge.persistence.UserService;
-//import pl.accepted.challenge.model.users.User;
-//
-//import java.util.List;
-//
-//@RestController
-//public class UsersController {
-//
-//	@Autowired
-//	private UserService userService;
-//
-//	@RequestMapping(value = "/users/all", method = RequestMethod.GET)
-//	@ResponseBody
-//	public List<User> getAllUsers() {
-//
-//		List<User> users = userService.findAll();
-//		return users;
-//	}
-//
-//	@RequestMapping(value = "/users/{nick}", method = RequestMethod.GET)
-//	@ResponseBody
-//	public User getOneUser(@PathVariable("nick") String nick) {
-//
-//		User user = userService.findByNick(nick);
-//		return user;
-//		/*if(user == null) return new ResponseEntity<List<User>>(user, null, HttpStatus.OK);
-//		else return new ResponseEntity<List<User>>(user, HttpStatus.OK);*/
-//	}
-//
-//}
+package pl.accepted.challenge.controllers;
+
+import challenges.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import pl.accepted.challenge.service.UsersService;
+
+import java.util.List;
+
+@RestController(value = "/users")
+public class UsersController {
+
+	@Autowired
+	private UsersService userService;
+
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	public List<User> getAllUsers() {
+		return userService.getAllUsers();
+	}
+
+	@RequestMapping(value = "/{nick}", method = RequestMethod.GET)
+	public User getOneUser(@PathVariable("nick") String nick) {
+		return userService.getUserByName(nick);
+	}
+
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	public void createUser(@RequestBody User user) {
+		userService.createNewUser(user);
+	}
+
+}
