@@ -2,6 +2,7 @@ package pl.accepted.challenge.controllers;
 
 import challenges.FirstWinChallenge;
 import challenges.User;
+import exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.accepted.challenge.persistence.FirstWinRepository;
@@ -46,7 +47,7 @@ public class ChallengeController {
 
     }
 
-    @RequestMapping(value = "/challenge")
+    @RequestMapping(value = "/{name}")
     public FirstWinChallenge getChallenge(@RequestParam("name") String name) {
 
         FirstWinChallenge challenge = firstWinRepository.findOne(name);
@@ -54,17 +55,17 @@ public class ChallengeController {
 
     }
 
-    /*@RequestMapping(value = "challenges/{name}/addparticipant", method = RequestMethod.POST)
-    public void addParticipant(@RequestParam("name") String name, @RequestParam("nick") String nick) {
+    @RequestMapping(value = "/{name}/add", method = RequestMethod.POST)
+    public void addParticipanToChallenge(@RequestParam("name") String name, @RequestParam("username") String participant) throws UserNotFoundException {
 
-        FirstWinChallenge challenge = firstWinChallengeService.findByName(name);
-        User user = userService.findByNick(nick);
+        FirstWinChallenge challenge = firstWinRepository.findOne(name);
+        User user = userRepository.findOne(participant);
 
-        if(challenge == null || user == null) return;
+        if(challenge == null || user == null) throw new UserNotFoundException();
 
         challenge.addParticipant(user);
-        firstWinChallengeService.updateChallenge(challenge);
+        firstWinRepository.save(challenge);
 
-    }*/
+    }
 
 }
