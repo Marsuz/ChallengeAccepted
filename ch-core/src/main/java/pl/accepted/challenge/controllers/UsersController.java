@@ -11,7 +11,8 @@ import pl.accepted.challenge.service.UsersService;
 
 import java.util.List;
 
-@RestController(value = "/users")
+@RestController
+@RequestMapping(value = "/users")
 public class UsersController {
 
 	@Autowired
