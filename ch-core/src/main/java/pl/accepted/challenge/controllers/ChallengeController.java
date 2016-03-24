@@ -56,7 +56,7 @@ public class ChallengeController {
     }
 
     @RequestMapping(value = "/{name}/add", method = RequestMethod.POST)
-    public void addParticipanToChallenge(@RequestParam("name") String name, @RequestParam("username") String participant) throws UserNotFoundException {
+    public void addParticipantToChallenge(@RequestParam("name") String name, @RequestParam("username") String participant) throws UserNotFoundException {
 
         FirstWinChallenge challenge = firstWinRepository.findOne(name);
         User user = userRepository.findOne(participant);
