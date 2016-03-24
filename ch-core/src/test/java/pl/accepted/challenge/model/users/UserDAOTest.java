@@ -1,17 +1,11 @@
 package pl.accepted.challenge.model.users;
 
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.accepted.challenge.persistence.UserDAO;
+import users.User;
 
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
 
 /**
  * Created by Marcin on 2016-03-19.

@@ -1,13 +1,12 @@
 package pl.accepted.challenge.persistence;
 
+import challenges.FirstWinChallenge;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import pl.accepted.challenge.model.challenges.FirstWinChallenge;
-import pl.accepted.challenge.model.challenges.QuantityChallenge;
-import pl.accepted.challenge.model.users.User;
+import users.User;
 
 import java.io.File;
 
@@ -15,7 +14,7 @@ public class HibernateUtils {
 	
 	private static SessionFactory sessionFactory;
 
-	private static Class[] classes = {User.class, FirstWinChallenge.class};//, QuantityChallenge.class};
+	private static Class[] classes = { User.class, FirstWinChallenge.class };//, QuantityChallenge.class};
 	
 	static
 	{

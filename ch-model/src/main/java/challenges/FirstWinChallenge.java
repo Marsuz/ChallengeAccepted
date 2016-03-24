@@ -1,17 +1,11 @@
-package pl.accepted.challenge.model.challenges;
+package challenges;
 
-import pl.accepted.challenge.model.users.User;
-import pl.accepted.challenge.persistence.FirstWinChallengeDAO;
+import users.User;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-/**
- * Created by Marcin on 2016-03-18.
- */
 
 @Entity
 public class FirstWinChallenge {
@@ -51,14 +45,7 @@ public class FirstWinChallenge {
         isActive = false;
     }
 
-    /*public long getId() {
-        return id;
-    }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-*/
     public String getName() {
         return name;
     }

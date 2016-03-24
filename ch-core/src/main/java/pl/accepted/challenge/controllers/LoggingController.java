@@ -1,20 +1,10 @@
 package pl.accepted.challenge.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.accepted.challenge.model.users.User;
 import pl.accepted.challenge.persistence.UserDAO;
 import pl.accepted.challenge.services.Encryptor;
-
-
-/**
- * Created by Marcin on 2016-03-19.
- */
-//@EnableAutoConfiguration(exclude = {
-//        JpaRepositoriesAutoConfiguration.class
-//})
+import users.User;
 
 @RestController
 public class LoggingController {

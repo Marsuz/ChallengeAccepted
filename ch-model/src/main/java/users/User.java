@@ -1,4 +1,4 @@
-package pl.accepted.challenge.model.users;
+package users;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

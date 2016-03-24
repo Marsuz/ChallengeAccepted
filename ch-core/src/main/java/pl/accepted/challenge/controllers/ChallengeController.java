@@ -1,19 +1,13 @@
 package pl.accepted.challenge.controllers;
 
+import challenges.FirstWinChallenge;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pl.accepted.challenge.model.challenges.FirstWinChallenge;
-import pl.accepted.challenge.model.users.User;
 import pl.accepted.challenge.persistence.FirstWinChallengeDAO;
 import pl.accepted.challenge.persistence.UserDAO;
+import users.User;
 
 import java.util.List;
-
-/**
- * Created by Marcin on 2016-03-19.
- */
 
 @RestController
 public class ChallengeController {

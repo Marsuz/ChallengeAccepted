@@ -1,16 +1,12 @@
 package pl.accepted.challenge.persistence;
 
+import challenges.QuantityChallenge;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
-import pl.accepted.challenge.model.challenges.QuantityChallenge;
 
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by Marcin on 2016-03-18.
- */
 
 @Repository
 public class QuantityChallengeDAO {

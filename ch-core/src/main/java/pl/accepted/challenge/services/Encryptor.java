@@ -2,10 +2,6 @@ package pl.accepted.challenge.services;
 
 import org.springframework.stereotype.Component;
 
-/**
- * Created by Marcin on 2016-03-19.
- */
-
 @Component
 public class Encryptor {
 

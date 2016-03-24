@@ -2,13 +2,11 @@ package pl.accepted.challenge.persistence;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
-import pl.accepted.challenge.model.users.User;
+import users.User;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by Marcin on 2016-03-18.
@@ -24,7 +22,7 @@ public class UserDAO {
         Session session = HibernateUtils.getSession();
         Transaction transaction = session.beginTransaction();
 
-        List<User> users = new ArrayList<User>();
+        List<User> users = new ArrayList<>();
         for(String x : ids) {
             User user = session.get(User.class, x);
             users.add(user);
