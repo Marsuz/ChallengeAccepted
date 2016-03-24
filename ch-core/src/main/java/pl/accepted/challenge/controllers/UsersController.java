@@ -28,9 +28,9 @@ public class UsersController {
 		return userService.getUserByName(nick);
 	}
 
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	@RequestMapping(value = "", method = RequestMethod.PUT)
 	public void createUser(@RequestBody User user) {
-		userService.createNewUser(user);
+		userService.updateOrCreate(user);
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
