@@ -29,10 +29,9 @@ public class FirstWinChallenge {
 	public FirstWinChallenge() {
 	}
 
-	public FirstWinChallenge(String name, User owner, User winner, LocalDateTime deadline) {
+	public FirstWinChallenge(String name, User owner, LocalDateTime deadline) {
 		this.name = name;
 		this.owner = owner;
-		this.winner = winner;
 		this.deadline = deadline;
 		participants = new ArrayList<>();
 		isActive = true;

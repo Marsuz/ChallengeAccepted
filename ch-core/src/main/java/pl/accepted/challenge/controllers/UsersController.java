@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.accepted.challenge.service.UsersService;
 
 import java.util.List;
 
-@RestController(value = "/users")
+@RestController
+@RequestMapping(value = "/users")
 public class UsersController {
 
 	@Autowired
@@ -28,9 +28,14 @@ public class UsersController {
 		return userService.getUserByName(nick);
 	}
 
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	@RequestMapping(value = "", method = RequestMethod.PUT)
 	public void createUser(@RequestBody User user) {
-		userService.createNewUser(user);
+		userService.updateOrCreate(user);
+	}
+
+	@RequestMapping(value = "", method = RequestMethod.DELETE)
+	public void deleteUser(@RequestBody User user) {
+		userService.deleteUser(user);
 	}
 
 }

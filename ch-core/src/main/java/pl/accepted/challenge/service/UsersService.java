@@ -21,7 +21,12 @@ public class UsersService {
 		return userRepository.findOne(nick);
 	}
 
-	public void createNewUser(User user) {
+	public void updateOrCreate(User user) {
 		userRepository.save(user);
 	}
+
+	public void deleteUser(User user) {
+		userRepository.delete(user);
+	}
+
 }
