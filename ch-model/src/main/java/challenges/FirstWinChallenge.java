@@ -1,26 +1,25 @@
 package challenges;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class FirstWinChallenge {
 
-    /*@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;*/
-
 	@Id
 	private String name;
 
 	@ManyToOne
-	@JoinColumn(name = "owner_id")
+	@JoinColumn(name = "owner_ide")
 	private User owner;
 
 	@ManyToOne
 	@JoinColumn(name = "winner_id")
 	private User winner;
+
+	private LocalDateTime deadline;
 
 	@OneToMany
 	private List<User> participants;
@@ -30,17 +29,13 @@ public class FirstWinChallenge {
 	public FirstWinChallenge() {
 	}
 
-	public FirstWinChallenge(String name) {
-		//this.id = FirstWinChallengeDAO.getNextId();
+	public FirstWinChallenge(String name, User owner, User winner, LocalDateTime deadline) {
 		this.name = name;
-		this.participants = new ArrayList<>();
-		this.isActive = true;
-	}
-
-	public void makeWinner(User user) {
-		winner = user;
-		user.incChallengesCounter();
-		isActive = false;
+		this.owner = owner;
+		this.winner = winner;
+		this.deadline = deadline;
+		participants = new ArrayList<>();
+		isActive = true;
 	}
 
 	public String getName() {
@@ -67,6 +62,14 @@ public class FirstWinChallenge {
 		this.winner = winner;
 	}
 
+	public LocalDateTime getDeadline() {
+		return deadline;
+	}
+
+	public void setDeadline(LocalDateTime deadline) {
+		this.deadline = deadline;
+	}
+
 	public List<User> getParticipants() {
 		return participants;
 	}
@@ -81,6 +84,12 @@ public class FirstWinChallenge {
 
 	public void setActive(boolean active) {
 		isActive = active;
+	}
+
+	public void finishChallenge(User user) {
+		winner = user;
+		user.setChallengeCounter(user.getChallengeCounter() + 1);
+		isActive = false;
 	}
 
 	public void addParticipant(User user) {
