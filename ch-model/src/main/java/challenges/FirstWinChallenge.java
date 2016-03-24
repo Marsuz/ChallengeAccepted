@@ -1,116 +1,124 @@
 package challenges;
 
-import users.User;
-
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Entity
 public class FirstWinChallenge {
 
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;*/
+	@Id
+	private String name;
 
-    @Id
-    private String name;
+	@ManyToOne
+	@JoinColumn(name = "owner_ide")
+	private User owner;
 
-    @ManyToOne
-    @JoinColumn(name="owner_id")
-    private User owner;
+	@ManyToOne
+	@JoinColumn(name = "winner_id")
+	private User winner;
 
-    @ManyToOne
-    @JoinColumn(name="winner_id")
-    private User winner;
+	private LocalDateTime deadline;
 
-    @OneToMany
-    private List<User> participants;
+	@OneToMany
+	private List<User> participants;
 
-    private boolean isActive;
+	private boolean isActive;
 
-    public FirstWinChallenge() {}
+	public FirstWinChallenge() {
+	}
 
-    public FirstWinChallenge(String name) {
-        //this.id = FirstWinChallengeDAO.getNextId();
-        this.name = name;
-        this.participants = new ArrayList<>();
-        this.isActive = true;
-    }
+	public FirstWinChallenge(String name, User owner, User winner, LocalDateTime deadline) {
+		this.name = name;
+		this.owner = owner;
+		this.winner = winner;
+		this.deadline = deadline;
+		participants = new ArrayList<>();
+		isActive = true;
+	}
 
-    public void makeWinner(User user) {
-        winner = user;
-        user.incChallengesCounter();
-        isActive = false;
-    }
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public User getOwner() {
+		return owner;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setOwner(User owner) {
+		this.owner = owner;
+	}
 
-    public User getOwner() {
-        return owner;
-    }
+	public User getWinner() {
+		return winner;
+	}
 
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
+	public void setWinner(User winner) {
+		this.winner = winner;
+	}
 
-    public User getWinner() {
-        return winner;
-    }
+	public LocalDateTime getDeadline() {
+		return deadline;
+	}
 
-    public void setWinner(User winner) {
-        this.winner = winner;
-    }
+	public void setDeadline(LocalDateTime deadline) {
+		this.deadline = deadline;
+	}
 
-    public List<User> getParticipants() {
-        return participants;
-    }
+	public List<User> getParticipants() {
+		return participants;
+	}
 
-    public void setParticipants(List<User> participants) {
-        this.participants = participants;
-    }
+	public void setParticipants(List<User> participants) {
+		this.participants = participants;
+	}
 
-    public boolean isActive() {
-        return isActive;
-    }
+	public boolean isActive() {
+		return isActive;
+	}
 
-    public void setActive(boolean active) {
-        isActive = active;
-    }
+	public void setActive(boolean active) {
+		isActive = active;
+	}
 
-    public void addParticipant(User user) {
-        participants.add(user);
-    }
+	public void finishChallenge(User user) {
+		winner = user;
+		user.setChallengeCounter(user.getChallengeCounter() + 1);
+		isActive = false;
+	}
 
-    public void removeParticipant(User user) {
+	public void addParticipant(User user) {
+		participants.add(user);
+	}
 
-        if(participants.contains(user)) {
-            participants.remove(user);
-        }
+	public void removeParticipant(User user) {
 
-    }
+		if (participants.contains(user)) {
+			participants.remove(user);
+		}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+	}
 
-        FirstWinChallenge challenge = (FirstWinChallenge) o;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o)
+			return true;
+		if (o == null || getClass() != o.getClass())
+			return false;
 
-        return name.equals(challenge.name);
+		FirstWinChallenge challenge = (FirstWinChallenge) o;
 
-    }
+		return name.equals(challenge.name);
 
-    @Override
-    public int hashCode() {
-        return name.hashCode();
-    }
+	}
+
+	@Override
+	public int hashCode() {
+		return name.hashCode();
+	}
 }
