@@ -9,6 +9,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.context.annotation.ComponentScan;
+import pl.accepted.challenge.persistence.HibernateUtils;
+
 /**
  * Created by Marcin on 2016-03-18.
  */
@@ -18,7 +20,7 @@ import org.springframework.context.annotation.ComponentScan;
 public class App {
 
     public static void main(String[] args) {
-        SpringApplication.run(App.class, args);
+            SpringApplication.run(App.class, args);
     }
 
 }
