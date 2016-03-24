@@ -10,19 +10,19 @@ app.config(function ($urlRouterProvider, $stateProvider) {
     $urlRouterProvider.otherwise('/');
     $stateProvider.state('home', {
         url: '/',
-        templateUrl: 'assets/app/home/home.html',
+        templateUrl: 'app/home/home.html',
         controller: function ($rootScope) {
             $rootScope.variable = currUser.nick;
         }
     })
         .state('about', {
             url: '/about',
-            templateUrl: 'assets/app/about/about.html'
+            templateUrl: 'app/about/about.html'
         })
 
         .state('my-challenges', {
             url: '/my-challenges',
-            templateUrl: 'assets/app/challenge/my-challenges.html',
+            templateUrl: 'app/challenge/my-challenges.html',
             controller: function ($scope, Challenges) {
                 console.log(Challenges);
                 Challenges.add(
@@ -54,7 +54,7 @@ app.config(function ($urlRouterProvider, $stateProvider) {
         })
         .state('challenge-info', {
             url: '/challenge-info',
-            templateUrl: 'assets/app/challenge/challenge-info.html',
+            templateUrl: 'app/challenge/challenge-info.html',
             controller: function () {
                 console.log(currUser);
             }
@@ -62,12 +62,12 @@ app.config(function ($urlRouterProvider, $stateProvider) {
 
         .state('users', {
             url: '/users',
-            templateUrl: 'assets/app/about/users.html'
+            templateUrl: 'app/about/users.html'
         })
 
         .state('new-challenge', {
             url: '/new-challenge',
-            templateUrl: 'assets/app/challenge/new.html',
+            templateUrl: 'app/challenge/new.html',
             controller: function($scope, NewChallengeService){
                 $scope.newEntry = {
                     name: "",
@@ -82,7 +82,7 @@ app.config(function ($urlRouterProvider, $stateProvider) {
     
         .state('login', {
             url: '/login',
-            templateUrl: 'assets/app/authorization/login.html',
+            templateUrl: 'app/authorization/login.html',
             controller: function ($scope, AuthService, $rootScope) {
                 $scope.credentials = {
                     username: "", 
@@ -104,7 +104,7 @@ app.config(function ($urlRouterProvider, $stateProvider) {
     
         .state('register', {
             url: '/register',
-            templateUrl: 'assets/app/authorization/register.html',
+            templateUrl: 'app/authorization/register.html',
             controller: function ($scope, AuthService) {
                 $scope.credentials = {
                     username: "",
