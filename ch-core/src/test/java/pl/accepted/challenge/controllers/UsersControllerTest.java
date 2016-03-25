@@ -10,7 +10,7 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import pl.accepted.challenge.service.UsersService;
+import pl.accepted.challenge.services.UsersService;
 
 import java.util.Arrays;
 import java.util.List;
