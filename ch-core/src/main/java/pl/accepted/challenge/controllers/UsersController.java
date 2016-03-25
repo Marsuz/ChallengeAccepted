@@ -28,12 +28,12 @@ public class UsersController {
 		return userService.getUserByName(nick);
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.PUT)
+	@RequestMapping(method = RequestMethod.PUT)
 	public void createUser(@RequestBody User user) {
 		userService.updateOrCreate(user);
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.DELETE)
+	@RequestMapping(method = RequestMethod.DELETE)
 	public void deleteUser(@RequestBody User user) {
 		userService.deleteUser(user);
 	}
