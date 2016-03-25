@@ -1,4 +1,4 @@
-package pl.accepted.challenge.service;
+package pl.accepted.challenge.services;
 
 import challenges.User;
 import org.springframework.beans.factory.annotation.Autowired;

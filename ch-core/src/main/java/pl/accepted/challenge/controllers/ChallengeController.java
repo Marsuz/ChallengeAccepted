@@ -7,8 +7,8 @@ import pl.accepted.challenge.exceptions.ChallengeNotFoundException;
 import pl.accepted.challenge.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pl.accepted.challenge.service.FirstWinService;
-import pl.accepted.challenge.service.UsersService;
+import pl.accepted.challenge.services.FirstWinService;
+import pl.accepted.challenge.services.UsersService;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
