@@ -1,12 +1,8 @@
 package challenges;
 
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 public class User {
@@ -15,17 +11,17 @@ public class User {
     private String username;
     private String name;
     private String surname;
-    private String hashedPass;
+    private String password;
     private long challengeCounter;
 
     public User() {
     }
 
-    public User(String username, String name, String surname, String hashedPass) {
+    public User(String username, String name, String surname, String password) {
         this.username = username;
         this.name = name;
         this.surname = surname;
-        this.hashedPass = hashedPass;
+        this.password = password;
         this.challengeCounter = 0;
     }
 
@@ -53,12 +49,12 @@ public class User {
         this.surname = surname;
     }
 
-    public String getHashedPass() {
-        return hashedPass;
+    public String getPassword() {
+        return password;
     }
 
-    public void setHashedPass(String hashedPass) {
-        this.hashedPass = hashedPass;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public long getChallengeCounter() {
@@ -76,7 +72,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", hashedPass='" + hashedPass + '\'' +
+                ", password='" + password + '\'' +
                 ", challengeCounter=" + challengeCounter +
                 '}';
     }

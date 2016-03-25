@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import pl.accepted.challenge.service.UsersService;
+import pl.accepted.challenge.services.UsersService;
 
 import java.util.List;
 
@@ -28,12 +28,12 @@ public class UsersController {
 		return userService.getUserByName(nick);
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.PUT)
+	@RequestMapping(method = RequestMethod.PUT)
 	public void createUser(@RequestBody User user) {
 		userService.updateOrCreate(user);
 	}
 
-	@RequestMapping(value = "", method = RequestMethod.DELETE)
+	@RequestMapping(method = RequestMethod.DELETE)
 	public void deleteUser(@RequestBody User user) {
 		userService.deleteUser(user);
 	}

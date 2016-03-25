@@ -2,11 +2,13 @@ package pl.accepted.challenge.controllers;
 
 import challenges.FirstWinChallenge;
 import challenges.User;
-import exceptions.UserNotFoundException;
+import pl.accepted.challenge.exceptions.ChallengeAlreadyExistsException;
+import pl.accepted.challenge.exceptions.ChallengeNotFoundException;
+import pl.accepted.challenge.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pl.accepted.challenge.persistence.FirstWinRepository;
-import pl.accepted.challenge.persistence.UserRepository;
+import pl.accepted.challenge.services.FirstWinService;
+import pl.accepted.challenge.services.UsersService;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -17,31 +19,30 @@ import java.util.List;
 public class ChallengeController {
 
     @Autowired
-    FirstWinRepository firstWinRepository;
+    FirstWinService firstWinService;
 
     @Autowired
-    UserRepository userRepository;
+    UsersService usersService;
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<FirstWinChallenge> getAllChallenges() {
 
-        List<FirstWinChallenge> challenges = (List) firstWinRepository.findAll();
-        return challenges;
+        return firstWinService.getAllFirstChallenges();
 
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public FirstWinChallenge addChallenge(@RequestParam("name") String name, @RequestParam("owner") String username, @RequestParam("deadline") String deadline) {
+    public FirstWinChallenge addChallenge(@RequestParam("name") String name, @RequestParam("deadline") String deadline, @RequestBody User user) throws ChallengeAlreadyExistsException{
 
-        User owner = userRepository.findOne(username);
-        FirstWinChallenge challenge = firstWinRepository.findOne(name);
+        FirstWinChallenge challenge = firstWinService.getFirstWinChallengeByName(name);
 
-        if(challenge != null) return null;
+        if(challenge != null)  throw new ChallengeAlreadyExistsException();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime deadlineAsLocalDateTime = LocalDateTime.parse(deadline, formatter);
 
-        challenge = new FirstWinChallenge(name, owner, deadlineAsLocalDateTime);
+        challenge = new FirstWinChallenge(name, user, deadlineAsLocalDateTime);
+        firstWinService.createOrUpdate(challenge);
 
         return challenge;
 
@@ -50,22 +51,42 @@ public class ChallengeController {
     @RequestMapping(value = "/{name}")
     public FirstWinChallenge getChallenge(@RequestParam("name") String name) {
 
-        FirstWinChallenge challenge = firstWinRepository.findOne(name);
-        return challenge;
+        return firstWinService.getFirstWinChallengeByName(name);
 
     }
 
     @RequestMapping(value = "/{name}/add", method = RequestMethod.POST)
-    public void addParticipantToChallenge(@RequestParam("name") String name, @RequestParam("username") String participant) throws UserNotFoundException {
+    public void addParticipantToChallenge(@RequestParam("name") String name, @RequestParam("username") String participant) throws UserNotFoundException, ChallengeNotFoundException {
 
-        FirstWinChallenge challenge = firstWinRepository.findOne(name);
-        User user = userRepository.findOne(participant);
+        FirstWinChallenge challenge = firstWinService.getFirstWinChallengeByName(name);
 
-        if(challenge == null || user == null) throw new UserNotFoundException();
+        if(challenge == null) throw new ChallengeNotFoundException();
+
+        User user = usersService.getUserByName(participant);
+
+        if(user == null) throw new UserNotFoundException();
 
         challenge.addParticipant(user);
-        firstWinRepository.save(challenge);
+        firstWinService.createOrUpdate(challenge);
 
     }
+
+    @RequestMapping(value = "/{name}/finish}", method = RequestMethod.POST)
+    public void finishChallenge(@RequestParam("name") String name, @RequestParam("username") String winner) throws UserNotFoundException, ChallengeNotFoundException {
+
+        FirstWinChallenge challenge = firstWinService.getFirstWinChallengeByName(name);
+
+        if(challenge == null) throw new ChallengeNotFoundException();
+
+        User user = usersService.getUserByName(winner);
+
+        if(user == null) throw new UserNotFoundException();
+
+        challenge.finishChallenge(user);
+
+        firstWinService.createOrUpdate(challenge);
+
+    }
+
 
 }
