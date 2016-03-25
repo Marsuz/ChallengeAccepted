@@ -40,7 +40,7 @@ public class UsersControllerTest {
 	}
 
 	@Test
-	public void getAllUsers() throws Exception {
+	public void shouldReturnAllUsers() throws Exception {
 		User user = new User("name1", "name1", "surname1", "password1");
 		User user1 = new User("name2", "name1", "surname1", "password1");
 		User user2 = new User("name2", "name1", "surname1", "password1");
@@ -53,7 +53,7 @@ public class UsersControllerTest {
 	}
 
 	@Test
-	public void getOneUser() throws Exception {
+	public void shouldReturnOneUser() throws Exception {
 		User expectedUser = new User("username", "name", "surname", "password");
 		when(usersService.getUserByName("username")).thenReturn(expectedUser);
 
@@ -63,7 +63,7 @@ public class UsersControllerTest {
 	}
 
 	@Test
-	public void createUser() throws Exception {
+	public void shouldCreateUser() throws Exception {
 		User toBeCreatedUser = new User("username", "name", "surname", "password");
 
 		given().body(toBeCreatedUser).contentType(ContentType.JSON).put("/users");
@@ -72,7 +72,7 @@ public class UsersControllerTest {
 	}
 
 	@Test
-	public void deleteUser() throws Exception {
+	public void shouldDeleteUser() throws Exception {
 		User toBeDeleted = new User("username", "name", "surname", "password");
 
 		given().body(toBeDeleted).contentType(ContentType.JSON).delete("/users");
