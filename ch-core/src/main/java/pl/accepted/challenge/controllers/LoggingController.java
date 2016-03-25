@@ -15,21 +15,19 @@ public class LoggingController {
     @RequestMapping(value = "/users/login", method = RequestMethod.POST)
     @ResponseBody
     public User getLoggedUser(@RequestParam("username") String username, @RequestParam("password") String password) {
-        return loggingService.findUser(username);
+        return loggingService.findUser(username, password);
     }
 
 
     @RequestMapping(value = "/users/register", method = RequestMethod.POST)
     @ResponseBody
-    public User registerUser(@RequestParam("username") String username, @RequestParam("name") String name, @RequestParam("surname") String surname,
-                                             @RequestParam("password") String password) throws UserAlreadyExistsException {
+    public User registerUser(@RequestBody User user) throws UserAlreadyExistsException {
 
-        User user = loggingService.findUser(username);
+        User existingUser = loggingService.findExistingUser(user.getUsername());
 
-        if(user != null) {
+        if(existingUser != null) {
             throw new UserAlreadyExistsException("This username already exists");
         } else {
-            user = new User(username, name, surname, password);
             loggingService.saveUser(user);
             return user;
         }
