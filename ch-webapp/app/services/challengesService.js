@@ -6,7 +6,7 @@ app.factory('Challenges', function(){
     var database = {newchallenges: [
         {
             id: 1,
-            name: "Wez Grabcia na silke",
+            name: "Zrób 100 pompek",
             owner: 'Zajda',
             expirationdate: '2016-03-22',
             image: 'small_cup.png',

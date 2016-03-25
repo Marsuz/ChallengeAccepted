@@ -84,30 +84,32 @@
 
 
 
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
+		<!--<script src="assets/js/jquery.min.js"></script>-->
+		<!--<script src="assets/js/skel.min.js"></script>-->
+		<!--<script src="assets/js/util.js"></script>-->
+
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-resource/angular-resource.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-        <script src="app/app.js"></script>
+        <script src="app.concat.js"></script>
+
 
         <!--<script src="app/services/challengesService.js"></script>-->
 		<!--<script src=/app/directives/timer.directive.js"></script>-->
-			<!--[if lte IE 8]>
-		<script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+			<!--&lt;!&ndash;[if lte IE 8]>-->
+		<!--<script src="assets/js/ie/respond.min.js"></script><![endif]&ndash;&gt;-->
+			<!--<script src="assets/js/main.js"></script>-->
         <!--<script src="assets/app/services/authService.js"></script>-->
 		<!--<script src="assets/app/services/newChallengeService.js"></script>-->
-		<script>
-			var $wtf = $("#challengeAccepted");
-			console.log($wtf);
-			$("#challengeAccepted").submit(function (event) {
-				event.preventDefault();
-				console.log("dupa");
-				var audio = new Audio("audio/challenge_accepted.mp3");
-				audio.play();
-			})
-		</script>
+		<!--<script>-->
+			<!--var $wtf = $("#challengeAccepted");-->
+			<!--console.log($wtf);-->
+			<!--$("#challengeAccepted").submit(function (event) {-->
+				<!--event.preventDefault();-->
+				<!--console.log("dupa");-->
+				<!--var audio = new Audio("audio/challenge_accepted.mp3");-->
+				<!--audio.play();-->
+			<!--})-->
+		<!--</script>-->
 	</body>
 </html>
