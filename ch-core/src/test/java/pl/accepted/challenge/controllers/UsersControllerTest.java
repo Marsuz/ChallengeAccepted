@@ -26,6 +26,7 @@ public class UsersControllerTest {
 
 	@InjectMocks
 	private static UsersController usersController = new UsersController();
+
 	@Mock
 	private UsersService usersService;
 
