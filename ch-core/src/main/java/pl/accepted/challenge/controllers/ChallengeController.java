@@ -2,10 +2,9 @@ package pl.accepted.challenge.controllers;
 
 import challenges.FirstWinChallenge;
 import challenges.User;
-import exceptions.ChallengeAlreadyExistsException;
-import exceptions.ChallengeNotFoundException;
-import exceptions.UserAlreadyExistsException;
-import exceptions.UserNotFoundException;
+import pl.accepted.challenge.exceptions.ChallengeAlreadyExistsException;
+import pl.accepted.challenge.exceptions.ChallengeNotFoundException;
+import pl.accepted.challenge.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pl.accepted.challenge.persistence.FirstWinRepository;
