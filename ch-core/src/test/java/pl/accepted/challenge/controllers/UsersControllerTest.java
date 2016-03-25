@@ -2,7 +2,6 @@ package pl.accepted.challenge.controllers;
 
 import challenges.User;
 import com.jayway.restassured.http.ContentType;
-import com.jayway.restassured.matcher.RestAssuredMatchers;
 import com.jayway.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.junit.Before;
 import org.junit.BeforeClass;
