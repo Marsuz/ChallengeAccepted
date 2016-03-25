@@ -1,5 +1,12 @@
 *.iml
 .idea/
 */target/*
+
+
+
+# ch-webapp
 node_modules/
 bower_components/
+app.concat.js
+
+
