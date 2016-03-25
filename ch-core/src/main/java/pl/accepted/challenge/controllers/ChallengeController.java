@@ -52,8 +52,7 @@ public class ChallengeController {
     @RequestMapping(value = "/{name}")
     public FirstWinChallenge getChallenge(@RequestParam("name") String name) {
 
-        FirstWinChallenge challenge = firstWinRepository.findOne(name);
-        return challenge;
+        return firstWinRepository.findOne(name);
 
     }
 
@@ -89,5 +88,6 @@ public class ChallengeController {
         firstWinRepository.save(challenge);
 
     }
+
 
 }
