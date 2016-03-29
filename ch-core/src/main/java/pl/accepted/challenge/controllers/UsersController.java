@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import pl.accepted.challenge.exceptions.UserAlreadyExistsException;
+import pl.accepted.challenge.exceptions.UserNotFoundException;
 import pl.accepted.challenge.services.UsersService;
 
 import java.util.List;
@@ -28,9 +30,14 @@ public class UsersController {
 		return userService.getUserByName(nick);
 	}
 
-	@RequestMapping(method = RequestMethod.PUT)
-	public void createUser(@RequestBody User user) {
-		userService.updateOrCreate(user);
+	@RequestMapping(value = "/create",method = RequestMethod.POST)
+	public void createUser(@RequestBody User user) throws UserAlreadyExistsException {
+		userService.create(user);
+	}
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public void updateUser(@RequestBody User user) throws UserNotFoundException {
+		userService.update(user);
 	}
 
 	@RequestMapping(method = RequestMethod.DELETE)

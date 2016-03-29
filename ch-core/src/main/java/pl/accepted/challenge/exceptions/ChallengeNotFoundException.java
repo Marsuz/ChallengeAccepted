@@ -1,7 +1,8 @@
 package pl.accepted.challenge.exceptions;
 
-/**
- * Created by Marcin on 2016-03-25.
- */
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(value = HttpStatus.NOT_FOUND,reason = "Challenge not found!")
 public class ChallengeNotFoundException extends Exception {
 }

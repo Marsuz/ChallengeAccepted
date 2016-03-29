@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.internal.exceptions.ExceptionIncludingMockitoWarnings;
 import pl.accepted.challenge.services.UsersService;
 
 import java.util.Arrays;
@@ -17,9 +18,7 @@ import java.util.List;
 import static com.jayway.restassured.module.mockmvc.RestAssuredMockMvc.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.atLeastOnce;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class UsersControllerTest {
 
@@ -66,17 +65,29 @@ public class UsersControllerTest {
 	public void shouldCreateUser() throws Exception {
 		User toBeCreatedUser = new User("username", "name", "surname", "password");
 
-		given().body(toBeCreatedUser).contentType(ContentType.JSON).put("/users");
+		given().body(toBeCreatedUser).contentType(ContentType.JSON).post("/users/create");
 
-		verify(usersService, atLeastOnce()).updateOrCreate(toBeCreatedUser);
+		verify(usersService, atLeastOnce()).create(toBeCreatedUser);
+		verify(usersService,atMost(1)).create(toBeCreatedUser);
+	}
+
+	@Test
+	public void shouldUpdateUser() throws Exception{
+		User userToBeUpdated = new User("username", "name", "surname", "password");
+
+		given().body(userToBeUpdated).contentType(ContentType.JSON).post("/users/update");
+
+		verify(usersService,atLeastOnce()).update(userToBeUpdated);
+		verify(usersService,atMost(1)).update(userToBeUpdated);
 	}
 
 	@Test
 	public void shouldDeleteUser() throws Exception {
-		User toBeDeleted = new User("username", "name", "surname", "password");
+		User userToBeDeleted = new User("username", "name", "surname", "password");
 
-		given().body(toBeDeleted).contentType(ContentType.JSON).delete("/users");
+		given().body(userToBeDeleted).contentType(ContentType.JSON).delete("/users");
 
-		verify(usersService, atLeastOnce()).deleteUser(toBeDeleted);
+		verify(usersService, atLeastOnce()).deleteUser(userToBeDeleted);
+		verify(usersService,atMost(1)).deleteUser(userToBeDeleted);
 	}
 }
