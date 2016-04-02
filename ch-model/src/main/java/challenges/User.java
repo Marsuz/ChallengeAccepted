@@ -8,12 +8,12 @@ import javax.persistence.Id;
 public class User {
 
     @Id
+    private long id;
     private String username;
     private String name;
     private String surname;
     private String password;
     private long challengeCounter;
-
     public User() {
     }
 
@@ -23,6 +23,10 @@ public class User {
         this.surname = surname;
         this.password = password;
         this.challengeCounter = 0;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getUsername() {

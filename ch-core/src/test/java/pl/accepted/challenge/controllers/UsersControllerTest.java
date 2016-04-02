@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.internal.exceptions.ExceptionIncludingMockitoWarnings;
 import pl.accepted.challenge.services.UsersService;
 
 import java.util.Arrays;
@@ -87,7 +86,7 @@ public class UsersControllerTest {
 
 		given().body(userToBeDeleted).contentType(ContentType.JSON).delete("/users");
 
-		verify(usersService, atLeastOnce()).deleteUser(userToBeDeleted);
-		verify(usersService,atMost(1)).deleteUser(userToBeDeleted);
+		verify(usersService, atLeastOnce()).deleteUser(userToBeDeleted.getId());
+		verify(usersService,atMost(1)).deleteUser(userToBeDeleted.getId());
 	}
 }

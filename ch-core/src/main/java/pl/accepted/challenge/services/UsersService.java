@@ -31,8 +31,8 @@ public class UsersService {
         }
     }
 
-    public void deleteUser(User user) {
-        userRepository.delete(user);
+    public void deleteUser(long id) {
+        userRepository.deleteById(id);
     }
 
     public void create(User user) throws UserAlreadyExistsException {

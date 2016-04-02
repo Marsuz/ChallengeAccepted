@@ -42,7 +42,8 @@ public class UsersController {
 
 	@RequestMapping(method = RequestMethod.DELETE)
 	public void deleteUser(@RequestBody User user) {
-		userService.deleteUser(user);
+		userService.deleteUser(user.getId());
+		//TODO
 	}
 
 }
