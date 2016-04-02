@@ -1,7 +1,9 @@
 # ChallengeAccepted
 
-npm install -g http-sever
-
-cd "project_directory"
-
-http-server
+```
+npm install -g gulp bower
+cd ch-webapp
+npm install
+bower install
+gulp dev
+```
