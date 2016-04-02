@@ -25,27 +25,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	private OAuth2ClientContext oAuth2ClientContext;
 
 	@Override protected void configure(HttpSecurity http) throws Exception {
-		http.antMatcher("/**").addFilter(ssoFilter());
 	}
 
-	@Bean
-	@ConfigurationProperties("facebook.client")
-	OAuth2ProtectedResourceDetails facebook() {
-		return new AuthorizationCodeResourceDetails();
-	}
-
-	@Bean
-	@ConfigurationProperties("facebook.resource")
-	ResourceServerProperties facebookResource() {
-		return new ResourceServerProperties();
-	}
-
-	private Filter ssoFilter() {
-		OAuth2ClientAuthenticationProcessingFilter facebookFilter = new OAuth2ClientAuthenticationProcessingFilter(
-				"/login/facebook");
-		OAuth2RestTemplate facebookTemplate = new OAuth2RestTemplate(facebook(), oAuth2ClientContext);
-		facebookFilter.setRestTemplate(facebookTemplate);
-		facebookFilter.setTokenServices(new UserInfoTokenServices(facebookResource().getUserInfoUri(), facebook().getClientId()));
-		return facebookFilter;
-	}
 }
