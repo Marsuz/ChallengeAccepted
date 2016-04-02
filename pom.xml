@@ -19,7 +19,6 @@
         <mockito-version>2.0.2-beta</mockito-version>
         <rest-reassured-version>2.9.0</rest-reassured-version>
         <spring-mock>2.9.0</spring-mock>
-        <security-oauth2-version>2.0.9.RELEASE</security-oauth2-version>
     </properties>
     <modules>
         <module>ch-core</module>
@@ -86,18 +85,6 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
-                <version>${spring-boot-version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.security.oauth</groupId>
-                <artifactId>spring-security-oauth2</artifactId>
-                <version>${security-oauth2-version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-security</artifactId>
                 <version>${spring-boot-version}</version>
             </dependency>
 
