@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.orm.jpa.EntityScan;
 
 @SpringBootApplication
-@EntityScan(basePackages = "challenges")
+@EntityScan(basePackages = {"challenges", "security"})
 public class App {
 
 	public static void main(String[] args) {
