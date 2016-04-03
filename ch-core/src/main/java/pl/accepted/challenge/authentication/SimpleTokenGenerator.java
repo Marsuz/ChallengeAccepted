@@ -11,6 +11,8 @@ public class SimpleTokenGenerator implements TokenGenerator {
 
     @Override
     public String generateUniqueToken() {
+        //FIXME
+        //check if such generated token exists
         return new BigInteger(130, secureRandom).toString(32);
     }
 }
