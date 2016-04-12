@@ -1,14 +1,15 @@
-package challenges;
+package model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class FirstWinChallenge {
-
-	@Id
+public class FirstWinChallenge extends ObjectWithId {
 	private String name;
 
 	@ManyToOne
@@ -26,10 +27,8 @@ public class FirstWinChallenge {
 
 	private boolean isActive;
 
-	public FirstWinChallenge() {
-	}
-
 	public FirstWinChallenge(String name, User owner, LocalDateTime deadline) {
+		super();
 		this.name = name;
 		this.owner = owner;
 		this.deadline = deadline;

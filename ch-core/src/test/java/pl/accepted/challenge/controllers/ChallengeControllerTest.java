@@ -1,9 +1,8 @@
 package pl.accepted.challenge.controllers;
 
-import challenges.FirstWinChallenge;
-import challenges.User;
 import com.jayway.restassured.module.mockmvc.RestAssuredMockMvc;
-import org.aspectj.lang.annotation.Before;
+import model.FirstWinChallenge;
+import model.User;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -17,15 +16,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import static com.jayway.restassured.module.mockmvc.RestAssuredMockMvc.given;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
 
-
-
-/**
- * Created by Marcin on 2016-03-25.
- */
 public class ChallengeControllerTest {
 
     @InjectMocks
@@ -58,7 +51,7 @@ public class ChallengeControllerTest {
         List<FirstWinChallenge> listOfAllChallenges = Arrays.asList(challenge1, challenge2);
         when(firstWinService.getAllFirstChallenges()).thenReturn(listOfAllChallenges);
 
-        List<FirstWinChallenge> returnedChallenges = Arrays.asList(given().when().get("/challenges/all").as(FirstWinChallenge[].class));
+        List<FirstWinChallenge> returnedChallenges = Arrays.asList(given().when().get("123/model/challenges/all").as(FirstWinChallenge[].class));
 
         assertThat(returnedChallenges).hasSize(2).contains(challenge1).contains(challenge2);
     }

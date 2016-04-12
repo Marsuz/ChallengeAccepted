@@ -1,12 +1,12 @@
 package pl.accepted.challenge.controllers;
 
-import challenges.FirstWinChallenge;
-import challenges.User;
+import model.FirstWinChallenge;
+import model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import pl.accepted.challenge.exceptions.ChallengeAlreadyExistsException;
 import pl.accepted.challenge.exceptions.ChallengeNotFoundException;
 import pl.accepted.challenge.exceptions.UserNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import pl.accepted.challenge.services.FirstWinService;
 import pl.accepted.challenge.services.UsersService;
 
@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/challenges")
+@RequestMapping(value = "{userId}/model.challenges")
 public class ChallengeController {
 
     @Autowired

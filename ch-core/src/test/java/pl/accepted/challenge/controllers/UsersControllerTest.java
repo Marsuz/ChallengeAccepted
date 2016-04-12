@@ -1,8 +1,8 @@
 package pl.accepted.challenge.controllers;
 
-import challenges.User;
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.module.mockmvc.RestAssuredMockMvc;
+import model.User;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -45,7 +45,7 @@ public class UsersControllerTest {
 		List<User> listOfUsers = Arrays.asList(user, user1, user2);
 		when(usersService.getAllUsers()).thenReturn(listOfUsers);
 
-		List<User> returnedUsers = Arrays.asList(given().when().get("/users/all").as(User[].class));
+		List<User> returnedUsers = Arrays.asList(given().when().get("123/users/all").as(User[].class));
 
 		assertThat(returnedUsers).hasSize(3).contains(user, user1, user2);
 	}
@@ -55,7 +55,7 @@ public class UsersControllerTest {
 		User expectedUser = new User("username", "name", "surname", "password");
 		when(usersService.getUserByName("username")).thenReturn(expectedUser);
 
-		User returnedUser = given().when().get("/users/username").as(User.class);
+		User returnedUser = given().when().get("123/users/username").as(User.class);
 
 		assertEquals(expectedUser, returnedUser);
 	}
@@ -64,7 +64,7 @@ public class UsersControllerTest {
 	public void shouldCreateUser() throws Exception {
 		User toBeCreatedUser = new User("username", "name", "surname", "password");
 
-		given().body(toBeCreatedUser).contentType(ContentType.JSON).post("/users/create");
+		given().body(toBeCreatedUser).contentType(ContentType.JSON).post("123/users/create");
 
 		verify(usersService, atLeastOnce()).create(toBeCreatedUser);
 		verify(usersService,atMost(1)).create(toBeCreatedUser);
@@ -74,7 +74,7 @@ public class UsersControllerTest {
 	public void shouldUpdateUser() throws Exception{
 		User userToBeUpdated = new User("username", "name", "surname", "password");
 
-		given().body(userToBeUpdated).contentType(ContentType.JSON).post("/users/update");
+		given().body(userToBeUpdated).contentType(ContentType.JSON).post("/123/users/update");
 
 		verify(usersService,atLeastOnce()).update(userToBeUpdated);
 		verify(usersService,atMost(1)).update(userToBeUpdated);
@@ -82,9 +82,9 @@ public class UsersControllerTest {
 
 	@Test
 	public void shouldDeleteUser() throws Exception {
-		User userToBeDeleted = new User("username", "name", "surname", "password");
+		User userToBeDeleted = new User("username", "name", "surname", "password", 1);
 
-		given().body(userToBeDeleted).contentType(ContentType.JSON).delete("/users");
+		given().body(userToBeDeleted).contentType(ContentType.JSON).delete("123/users");
 
 		verify(usersService, atLeastOnce()).deleteUser(userToBeDeleted.getId());
 		verify(usersService,atMost(1)).deleteUser(userToBeDeleted.getId());

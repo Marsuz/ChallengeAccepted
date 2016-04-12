@@ -1,6 +1,6 @@
 package pl.accepted.challenge.services;
 
-import challenges.User;
+import model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.accepted.challenge.exceptions.UserAlreadyExistsException;

@@ -1,6 +1,6 @@
 package pl.accepted.challenge.services;
 
-import challenges.FirstWinChallenge;
+import model.FirstWinChallenge;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.accepted.challenge.persistence.FirstWinRepository;

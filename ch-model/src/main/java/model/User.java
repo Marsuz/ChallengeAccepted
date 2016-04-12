@@ -1,14 +1,11 @@
-package challenges;
+package model;
 
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity
-public class User {
+public class User extends ObjectWithId {
 
-    @Id
-    private long id;
     private String username;
     private String name;
     private String surname;
@@ -18,6 +15,7 @@ public class User {
     }
 
     public User(String username, String name, String surname, String password) {
+        super();
         this.username = username;
         this.name = name;
         this.surname = surname;
@@ -25,9 +23,15 @@ public class User {
         this.challengeCounter = 0;
     }
 
-    public long getId() {
-        return id;
+    public User(String username, String name, String surname, String password, Integer id) {
+        super(id);
+        this.username = username;
+        this.name = name;
+        this.surname = surname;
+        this.password = password;
+        this.challengeCounter = 0;
     }
+
 
     public String getUsername() {
         return username;

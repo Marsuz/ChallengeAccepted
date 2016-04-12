@@ -1,23 +1,20 @@
-package security;
+package model;
 
-import challenges.User;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Entity
-public class AssignedToken {
+public class AssignedToken extends ObjectWithId {
 
     private final String hashedToken;
     private final LocalDateTime expirationDate;
     @ManyToOne
     private final User assignedUser;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
     private boolean isValid = true;
 
     public AssignedToken(String hashedToken, User assignedUser, LocalDateTime expirationDate) {
+        super();
         this.hashedToken = hashedToken;
         this.assignedUser = assignedUser;
         this.expirationDate = expirationDate;
@@ -37,10 +34,6 @@ public class AssignedToken {
 
     public User getAssignedUser() {
         return assignedUser;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public boolean isValid() {

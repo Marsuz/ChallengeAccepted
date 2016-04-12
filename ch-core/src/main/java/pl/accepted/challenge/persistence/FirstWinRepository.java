@@ -1,6 +1,6 @@
 package pl.accepted.challenge.persistence;
 
-import challenges.FirstWinChallenge;
+import model.FirstWinChallenge;
 import org.springframework.data.repository.CrudRepository;
 
 public interface FirstWinRepository extends CrudRepository<FirstWinChallenge, String> {
@@ -12,17 +12,17 @@ public interface FirstWinRepository extends CrudRepository<FirstWinChallenge, St
 	//        Session session = HibernateUtils.getSession();
 	//        Transaction transaction = session.beginTransaction();
 	//
-	//        List<FirstWinChallenge> challenges = new ArrayList<>();
-	//        for(String x : ids) {
+    //        List<FirstWinChallenge> model.challenges = new ArrayList<>();
+    //        for(String x : ids) {
 	//            FirstWinChallenge challenge =  session.get(FirstWinChallenge.class, x);
-	//            challenges.add(challenge);
-	//        }
+    //            model.challenges.add(challenge);
+    //        }
 	//
 	//        transaction.commit();
 	//        session.close();
 	//
-	//        return challenges;
-	//
+    //        return model.challenges;
+    //
 	//    }
 	//
 	//    public void removeByIds(String... ids) {
@@ -44,13 +44,13 @@ public interface FirstWinRepository extends CrudRepository<FirstWinChallenge, St
 	//
 	//    }
 	//
-	//    public void updateChallenge(FirstWinChallenge... challenges) {
-	//
+    //    public void updateChallenge(FirstWinChallenge... model.challenges) {
+    //
 	//        Session session = HibernateUtils.getSession();
 	//        Transaction transaction = session.beginTransaction();
 	//
-	//        for(FirstWinChallenge x : challenges) {
-	//            FirstWinChallenge oldChallenge = session.get(FirstWinChallenge.class, x.getName());
+    //        for(FirstWinChallenge x : model.challenges) {
+    //            FirstWinChallenge oldChallenge = session.get(FirstWinChallenge.class, x.getName());
 	//            if(oldChallenge != null) {
 	//                session.merge(x);
 	//            } else {
@@ -68,13 +68,13 @@ public interface FirstWinRepository extends CrudRepository<FirstWinChallenge, St
 	//        Session session = HibernateUtils.getSession();
 	//        Transaction transaction = session.beginTransaction();
 	//
-	//        List<FirstWinChallenge> challenges = session.createQuery("from FirstWinChallenge").list();
-	//
+    //        List<FirstWinChallenge> model.challenges = session.createQuery("from FirstWinChallenge").list();
+    //
 	//        transaction.commit();
 	//        session.close();
 	//
-	//        return challenges;
-	//
+    //        return model.challenges;
+    //
 	//    }
 	//
 	//    public FirstWinChallenge findByName(String name) {
