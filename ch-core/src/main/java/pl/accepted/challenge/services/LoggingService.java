@@ -16,7 +16,7 @@ public class LoggingService {
     }
 
     public User findExistingUser(String username) {
-        return userRepository.findOne(username);
+        return userRepository.findByUsername(username);
     }
 
     public User findUser(String username, String password) {
